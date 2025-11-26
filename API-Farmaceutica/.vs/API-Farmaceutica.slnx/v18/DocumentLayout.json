@@ -1,0 +1,62 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\carri\\CARRION\\C#\\WEB-API\\API-Farmaceutica\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{830BB9D9-25B6-83CC-A48B-66E0A6C02DE5}|API-Farmaceutica.csproj|c:\\users\\carri\\carrion\\c#\\web-api\\api-farmaceutica\\application\\shareds\\rop\\result.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{830BB9D9-25B6-83CC-A48B-66E0A6C02DE5}|API-Farmaceutica.csproj|solutionrelative:application\\shareds\\rop\\result.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{830BB9D9-25B6-83CC-A48B-66E0A6C02DE5}|API-Farmaceutica.csproj|c:\\users\\carri\\carrion\\c#\\web-api\\api-farmaceutica\\application\\features\\facturas\\facturaread\\facturaread.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{830BB9D9-25B6-83CC-A48B-66E0A6C02DE5}|API-Farmaceutica.csproj|solutionrelative:application\\features\\facturas\\facturaread\\facturaread.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Result.cs",
+              "DocumentMoniker": "C:\\Users\\carri\\CARRION\\C#\\WEB-API\\API-Farmaceutica\\Application\\Shareds\\ROP\\Result.cs",
+              "RelativeDocumentMoniker": "Application\\Shareds\\ROP\\Result.cs",
+              "ToolTip": "C:\\Users\\carri\\CARRION\\C#\\WEB-API\\API-Farmaceutica\\Application\\Shareds\\ROP\\Result.cs",
+              "RelativeToolTip": "Application\\Shareds\\ROP\\Result.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-26T01:46:23.722Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "FacturaRead.cs",
+              "DocumentMoniker": "C:\\Users\\carri\\CARRION\\C#\\WEB-API\\API-Farmaceutica\\Application\\Features\\Facturas\\FacturaRead\\FacturaRead.cs",
+              "RelativeDocumentMoniker": "Application\\Features\\Facturas\\FacturaRead\\FacturaRead.cs",
+              "ToolTip": "C:\\Users\\carri\\CARRION\\C#\\WEB-API\\API-Farmaceutica\\Application\\Features\\Facturas\\FacturaRead\\FacturaRead.cs",
+              "RelativeToolTip": "Application\\Features\\Facturas\\FacturaRead\\FacturaRead.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-26T00:29:59.186Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

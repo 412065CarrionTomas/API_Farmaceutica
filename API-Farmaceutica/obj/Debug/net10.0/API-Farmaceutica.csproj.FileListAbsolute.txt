@@ -1,0 +1,8 @@
+C:\Users\carri\CARRION\C#\WEB-API\API-Farmaceutica\obj\Debug\net10.0\API-Farmaceutica.csproj.AssemblyReference.cache
+C:\Users\carri\CARRION\C#\WEB-API\API-Farmaceutica\obj\Debug\net10.0\rpswa.dswa.cache.json
+C:\Users\carri\CARRION\C#\WEB-API\API-Farmaceutica\obj\Debug\net10.0\API-Farmaceutica.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\carri\CARRION\C#\WEB-API\API-Farmaceutica\obj\Debug\net10.0\API-Farmaceutica.AssemblyInfoInputs.cache
+C:\Users\carri\CARRION\C#\WEB-API\API-Farmaceutica\obj\Debug\net10.0\API-Farmaceutica.AssemblyInfo.cs
+C:\Users\carri\CARRION\C#\WEB-API\API-Farmaceutica\obj\Debug\net10.0\API-Farmaceutica.csproj.CoreCompileInputs.cache
+C:\Users\carri\CARRION\C#\WEB-API\API-Farmaceutica\obj\Debug\net10.0\API-Farmaceutica.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\carri\CARRION\C#\WEB-API\API-Farmaceutica\obj\Debug\net10.0\API-Farmaceutica.MvcApplicationPartsAssemblyInfo.cache

@@ -1,0 +1,40 @@
+﻿using Domain.Models;
+using API_Farmaceutica.Application.Shareds.InterfacesRepository;
+using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
+
+namespace API_Farmaceutica.Infrastructure.Repositories
+{
+    public class FacturaRepository : IFacturaRepository
+    {
+        private readonly FarmaceuticaContext _Context;
+        public FacturaRepository(FarmaceuticaContext context)
+        {
+            _Context = context;
+        }
+
+        
+
+        public async Task<List<Facturas>> GetGananciasFacturasAsync(Expression<Func<Facturas, bool>> condicion)
+        {
+            return await _Context.Facturas
+                .Include(f => f.DetallesFacturas)
+                .Where(condicion)
+                .ToListAsync();
+        }
+
+        public async Task<List<sp_ganancias_mensualesResult>> GetGananciasMensualesAsync(int? anio)
+            => await _Context.Functions.sp_ganancias_mensualesAsync(anio);
+
+        public async Task<List<Vwmedicamentotop>> GetMedicamentoTopAsync() 
+            => await _Context.Vwmedicamentotop.ToListAsync();
+
+        public async Task<List<sp_mpusadosResult>> GetMPUsadosAsync(int? anio)
+            => await _Context.Functions.sp_mpusadosAsync(anio);
+        public async Task<List<sp_ventas_por_sucursalResult>> GetVentasPorSucursalAsync(int? anio)
+            => await _Context.Functions.sp_ventas_por_sucursalAsync(anio);
+        public async Task<List<Vwproductotop>> GetProductoTopAsync() 
+            => await _Context.Vwproductotop.ToListAsync();
+
+    }
+}

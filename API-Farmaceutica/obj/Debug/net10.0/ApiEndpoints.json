@@ -1,0 +1,12 @@
+[
+  {
+    "ContainingType": "API_Farmaceutica.Controllers.ProductoController",
+    "Method": "Get",
+    "RelativePath": "api/Producto/obtener_productos",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  }
+]
