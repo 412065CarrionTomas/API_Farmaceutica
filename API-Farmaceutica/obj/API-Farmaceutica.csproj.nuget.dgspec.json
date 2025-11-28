@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\carri\\CARRION\\C#\\WEB-API\\API-Farmaceutica\\API-Farmaceutica.csproj": {}
+    "C:\\Users\\carri\\CARRION\\C#\\WEB-API\\API-FARMACEUTICA-GITHUB\\API-Farmaceutica\\API-Farmaceutica.csproj": {}
   },
   "projects": {
-    "C:\\Users\\carri\\CARRION\\C#\\WEB-API\\API-Farmaceutica\\API-Farmaceutica.csproj": {
+    "C:\\Users\\carri\\CARRION\\C#\\WEB-API\\API-FARMACEUTICA-GITHUB\\API-Farmaceutica\\API-Farmaceutica.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\carri\\CARRION\\C#\\WEB-API\\API-Farmaceutica\\API-Farmaceutica.csproj",
+        "projectUniqueName": "C:\\Users\\carri\\CARRION\\C#\\WEB-API\\API-FARMACEUTICA-GITHUB\\API-Farmaceutica\\API-Farmaceutica.csproj",
         "projectName": "API-Farmaceutica",
-        "projectPath": "C:\\Users\\carri\\CARRION\\C#\\WEB-API\\API-Farmaceutica\\API-Farmaceutica.csproj",
+        "projectPath": "C:\\Users\\carri\\CARRION\\C#\\WEB-API\\API-FARMACEUTICA-GITHUB\\API-Farmaceutica\\API-Farmaceutica.csproj",
         "packagesPath": "C:\\Users\\carri\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\carri\\CARRION\\C#\\WEB-API\\API-Farmaceutica\\obj\\",
+        "outputPath": "C:\\Users\\carri\\CARRION\\C#\\WEB-API\\API-FARMACEUTICA-GITHUB\\API-Farmaceutica\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
