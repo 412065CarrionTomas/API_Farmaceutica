@@ -11,5 +11,7 @@ namespace API_Farmaceutica.Application.Shareds.InterfacesRepository
         Task<List<sp_ganancias_mensualesResult>> GetGananciasMensualesAsync(int? anio);
         Task<List<sp_mpusadosResult>> GetMPUsadosAsync(int? anio);
         Task<List<sp_ventas_por_sucursalResult>> GetVentasPorSucursalAsync(int? anio);
+        Task<List<Facturas>> GetFacturasAsync();
+        Task<List<Facturas>> GetFacturasByFiltersAsync(Expression<Func<Facturas,bool>> condicion);
     }
 }

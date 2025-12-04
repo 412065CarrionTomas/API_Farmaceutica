@@ -1,8 +1,11 @@
+using API_Farmaceutica.Application.Features.FacturasFeatures;
+using API_Farmaceutica.Application.Features.FacturasFeatures.GetFacturasByFilters;
 using API_Farmaceutica.Application.Shareds.InterfacesRepository;
 using API_Farmaceutica.Infrastructure.Repositories;
 using Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using Scalar.AspNetCore;
+using System.Reflection;
 using System.Text.Json.Serialization;
 
 namespace API_Farmaceutica
@@ -24,35 +27,37 @@ namespace API_Farmaceutica
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
             builder.Services.AddOpenApi();
 
+            //CONTEXT
             builder.Services.AddDbContext<FarmaceuticaContext>(options =>
             options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-            // PROVEEDORES
+            //AUTOMAPPER
+            builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
+
+            //REPOSITORIES
+                // PROVEEDORES
             builder.Services.AddScoped<IProveedorRepository, ProveedorRepository>();
-
-            // SUCURSALES
+                // SUCURSALES
             builder.Services.AddScoped<ISucursalRepository, SucursalRepository>();
-
-            // COMPRAS
+                // COMPRAS
             builder.Services.AddScoped<ICompraRepository, CompraRepository>();
-
-            // FACTURAS
+                // FACTURAS 
             builder.Services.AddScoped<IFacturaRepository, FacturaRepository>();
-
-            // MEDICAMENTOS
+                // MEDICAMENTOS
             builder.Services.AddScoped<IMedicamentoRepository, MedicamentoRepository>();
-
-            // PRODUCTOS
+                // PRODUCTOS
             builder.Services.AddScoped<IProductoRepository, ProductoRepository>();
-
-            // DETALLE DE COMPRA
+                // DETALLE DE COMPRA
             builder.Services.AddScoped<IDetalleCompraRepository, DetalleCompraRepository>();
-
-            // EMPLEADOS
+                // EMPLEADOS
             builder.Services.AddScoped<IEmpleadoRepostiory, EmpleadoRepository>();
-
-            // REPARTIDOR
+                // REPARTIDOR
             builder.Services.AddScoped<IRepartidorRepository, RepartidorRepository>();
+
+            //FEATURES
+                //FACTURA
+            builder.Services.AddScoped<GetFacturasHandler>();
+            builder.Services.AddScoped<GetFacturasByFiltersHandler>();
 
             var app = builder.Build();
 
@@ -60,7 +65,10 @@ namespace API_Farmaceutica
             if (app.Environment.IsDevelopment())
             {
                 app.MapOpenApi();
-                app.MapScalarApiReference();
+                app.MapScalarApiReference(options
+                    => options.WithTitle(title: "Farmaceutica-API")
+                    .WithTheme(ScalarTheme.DeepSpace)
+                    .WithDefaultHttpClient(ScalarTarget.CSharp, ScalarClient.HttpClient));
             }
 
             app.UseHttpsRedirection();

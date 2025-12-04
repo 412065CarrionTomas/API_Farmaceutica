@@ -2,6 +2,7 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace Domain.Models;
 
@@ -22,14 +23,14 @@ public partial class DetallesFacturas
     public int? Coberturaid { get; set; }
 
     public int? Facturaid { get; set; }
-
+    [JsonIgnore]
     public virtual Coberturas Cobertura { get; set; }
-
+    [JsonIgnore]
     public virtual Descuentos Descuento { get; set; }
-
+    [JsonIgnore]
     public virtual Facturas Factura { get; set; }
-
+    [JsonIgnore]
     public virtual Medicamentos Medicamento { get; set; }
-
+    [JsonIgnore]
     public virtual Productos Producto { get; set; }
 }

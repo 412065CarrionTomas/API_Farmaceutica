@@ -2,6 +2,7 @@
 using API_Farmaceutica.Application.Shareds.InterfacesRepository;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
+using Microsoft.EntityFrameworkCore.Query;
 
 namespace API_Farmaceutica.Infrastructure.Repositories
 {
@@ -12,8 +13,6 @@ namespace API_Farmaceutica.Infrastructure.Repositories
         {
             _Context = context;
         }
-
-        
 
         public async Task<List<Facturas>> GetGananciasFacturasAsync(Expression<Func<Facturas, bool>> condicion)
         {
@@ -36,5 +35,17 @@ namespace API_Farmaceutica.Infrastructure.Repositories
         public async Task<List<Vwproductotop>> GetProductoTopAsync() 
             => await _Context.Vwproductotop.ToListAsync();
 
+        public async Task<List<Facturas>> GetFacturasAsync()
+            => await _Context.Facturas
+            .AsNoTracking()
+            .Include(x => x.DetallesFacturas)
+            .ToListAsync();
+
+        public async Task<List<Facturas>> GetFacturasByFiltersAsync(Expression<Func<Facturas, bool>> condicion)
+            => await _Context.Facturas
+            .AsNoTracking()
+            .Include(x => x.DetallesFacturas)
+            .Where(condicion)
+            .ToListAsync();
     }
 }

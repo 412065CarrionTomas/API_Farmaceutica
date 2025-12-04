@@ -32,6 +32,7 @@ namespace API_Farmaceutica.Infrastructure.Repositories
                 .ToListAsync();
         }
 
+        //REVISAR   
         public async Task<bool> InsertCompraAsync(int compraId, DetallesCompras detalle, string entidad)
         {
             Compras? compraExiste = await _Context.Compras.FirstAsync(c => c.Compraid == compraId);
@@ -47,11 +48,7 @@ namespace API_Farmaceutica.Infrastructure.Repositories
             await _Context.Functions.sp_traer_tablas_detalleAsync(detalle.CodigoBarraProductoid
                 , detalle.CodigoBarraMedicamentoid
                 , detalle.LoteMedicamentoid
-                , detalle.LoteProductoid
-                , codBarraProducto
-                , codBarraMedicamento
-                , loteMedicamento
-                , loteProducto);
+                , detalle.LoteProductoid);
 
             if(entidad == "p")
             {
@@ -75,6 +72,7 @@ namespace API_Farmaceutica.Infrastructure.Repositories
             return await _Context.SaveChangesAsync() > 0;
         }
 
+        //REVISARA
         public async Task<bool> UpdateCompraAsync(int id, DetallesCompras detalle, string entidad)
         {
             var actual = await _Context.DetallesCompras
@@ -90,11 +88,7 @@ namespace API_Farmaceutica.Infrastructure.Repositories
             await _Context.Functions.sp_traer_tablas_detalleAsync(detalle.CodigoBarraProductoid
                 , detalle.CodigoBarraMedicamentoid
                 , detalle.LoteMedicamentoid
-                , detalle.LoteProductoid
-                , codBarraProducto
-                , codBarraMedicamento
-                , loteMedicamento
-                , loteProducto);
+                , detalle.LoteProductoid);
 
             if (entidad == "p")
             {
