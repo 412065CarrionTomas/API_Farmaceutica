@@ -1,5 +1,5 @@
-﻿using Domain.Models;
-using API_Farmaceutica.Application.Shareds.InterfacesRepository;
+﻿using API_Farmaceutica.Application.Shareds.InterfacesRepository;
+using Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
@@ -14,26 +14,40 @@ namespace API_Farmaceutica.Infrastructure.Repositories
             _Context = context;
         }
 
-        public async Task<List<Productos>> GetProductosAsync()
+        public Task<bool> DeleteProductoAsync(int id)
         {
-            return await _Context.Productos.ToListAsync();
+            throw new NotImplementedException();
         }
 
-        public async Task<List<InventariosProductos>> GetAllByFiltersAsync(Expression<Func<InventariosProductos, bool>> condicion)
+        public async Task<List<Productos>> GetAllProductosAsync()
         {
-            return await _Context.InventariosProductos
-               .Include(x => x.Producto.UnidadMedida)
-               .Include(x => x.Producto.ClasificacionSuministro)
-               .Include(x => x.Producto.InventariosProductos)
-               .Include(x => x.Sucursal)
-               .Where(condicion).ToListAsync();
+            return await _Context.Productos
+                .Include(x => x.TipoSuministro)
+                .Include(x => x.TipoPresentacion)
+                .Include(x => x.ClasificacionSuministro)
+                .Include(x => x.UnidadMedida)
+                .ToListAsync();
         }
 
-        public async Task<LotesProductos?> GetLoteProductoAsync(Expression<Func<LotesProductos, bool>> condicion)
+        public async Task<List<Productos>> GetAllProductosByFiltersAsync(Expression<Func<Productos, bool>> condicion)
         {
-            return await _Context.LotesProductos
-                .Include(x => x.Producto)
-                .FirstOrDefaultAsync(condicion);
+            return await _Context.Productos
+                .Include(x => x.TipoSuministro)
+                .Include(x => x.TipoPresentacion)
+                .Include(x => x.ClasificacionSuministro)
+                .Include(x => x.UnidadMedida)
+                .Where(condicion)
+                .ToListAsync();
+        }
+
+        public Task<bool> InsertProductoAsync(Productos entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<bool> UpdateProductoAsync(int id, Productos entity)
+        {
+            throw new NotImplementedException();
         }
     }
 }

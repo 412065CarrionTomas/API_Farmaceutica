@@ -19,7 +19,7 @@ namespace API_Farmaceutica.Application.Features.FacturasFeatures.GetFacturasByFi
 
         public async Task<Result<List<GetFacturasByFiltersResponse>>> GetFacturasHandlerAsync(GetFacturasByFiltersRequest request)
         {
-            return await GetFacturasByFiltersValidate.Validate(request)
+            return await GetFacturasByFiltersValidate.GetFacturasByFiltersValidateRequest(request)
                 .Bind(ConsultaBD)
                 .Bind(Mapeo);
         }

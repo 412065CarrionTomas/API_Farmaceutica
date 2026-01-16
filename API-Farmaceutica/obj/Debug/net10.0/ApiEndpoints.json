@@ -1,6 +1,22 @@
 [
   {
     "ContainingType": "API_Farmaceutica.Application.Features.FacturasFeatures.UseGeneric.FacturaController",
+    "Method": "Post",
+    "RelativePath": "api/Factura/insertar_factura",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "API_Farmaceutica.Application.Features.FacturasFeatures.PostFactura.PostFacturaRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_Farmaceutica.Application.Features.FacturasFeatures.UseGeneric.FacturaController",
     "Method": "Get",
     "RelativePath": "api/Factura/obtener_facturas",
     "HttpMethod": "GET",
@@ -46,6 +62,32 @@
         "Name": "MetodoPagoID",
         "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=10.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
         "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_Farmaceutica.Application.Features.ProductosFeatures.UseGeneric.ProductosController",
+    "Method": "GetAll",
+    "RelativePath": "api/Productos/obtener_productos",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API_Farmaceutica.Application.Features.ProductosFeatures.UseGeneric.ProductosController",
+    "Method": "GetAllByFilters",
+    "RelativePath": "api/Productos/obtener_productos_filtrados",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "API_Farmaceutica.Application.Features.ProductosFeatures.GetProductosByFilters.GetProductosByFiltersRequest",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []

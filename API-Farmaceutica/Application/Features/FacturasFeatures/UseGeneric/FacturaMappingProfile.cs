@@ -1,7 +1,7 @@
 ﻿using API_Farmaceutica.Application.Features.FacturasFeatures.GetFacturasByFilters;
+using API_Farmaceutica.Application.Features.FacturasFeatures.PostFactura;
 using AutoMapper;
 using Domain.Models;
-using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 
 namespace API_Farmaceutica.Application.Features.FacturasFeatures.UseGeneric
 {
@@ -10,7 +10,8 @@ namespace API_Farmaceutica.Application.Features.FacturasFeatures.UseGeneric
         public FacturaMappingProfile()
         {
             //Feature GetFacturas
-            CreateMap<DetallesFacturaDTO, DetallesFacturas>();
+            CreateMap<DetallesFacturas, DetallesFacturaDTO>();
+
 
             CreateMap<Facturas, GetFacturaResponse>()
                 .ForMember(dto => dto.DetallesFacturaDTO, src
@@ -22,6 +23,13 @@ namespace API_Farmaceutica.Application.Features.FacturasFeatures.UseGeneric
             CreateMap<Facturas, GetFacturasByFiltersResponse>()
                 .ForMember(dto => dto.DetalleFacturaDTO, src
                     => src.MapFrom(dom => dom.DetallesFacturas));
+
+            //Feature PostFactura
+            CreateMap<DetallesFacturasPost, DetallesFacturas>();
+
+            CreateMap<PostFacturaRequest, Facturas>()
+                .ForMember(dom => dom.DetallesFacturas, src
+                => src.MapFrom(dto => dto.DetalleFacturaDTO));
         }
     }
 }

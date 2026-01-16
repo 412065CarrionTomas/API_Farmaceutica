@@ -13,7 +13,6 @@ namespace Domain.Models
 {
     public partial class FarmaceuticaContext
     {
-        internal readonly object Procedures;
         private IFarmaceuticaContextFunctions _procedures;
 
         public virtual IFarmaceuticaContextFunctions Functions

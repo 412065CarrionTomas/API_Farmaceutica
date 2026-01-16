@@ -1,5 +1,8 @@
 using API_Farmaceutica.Application.Features.FacturasFeatures;
 using API_Farmaceutica.Application.Features.FacturasFeatures.GetFacturasByFilters;
+using API_Farmaceutica.Application.Features.FacturasFeatures.PostFactura;
+using API_Farmaceutica.Application.Features.ProductosFeatures.GetProductos;
+using API_Farmaceutica.Application.Features.ProductosFeatures.GetProductosByFilters;
 using API_Farmaceutica.Application.Shareds.InterfacesRepository;
 using API_Farmaceutica.Infrastructure.Repositories;
 using Domain.Models;
@@ -24,7 +27,6 @@ namespace API_Farmaceutica
                     opts.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
                     opts.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
                 });
-            // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
             builder.Services.AddOpenApi();
 
             //CONTEXT
@@ -35,29 +37,20 @@ namespace API_Farmaceutica
             builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
             //REPOSITORIES
-                // PROVEEDORES
-            builder.Services.AddScoped<IProveedorRepository, ProveedorRepository>();
-                // SUCURSALES
-            builder.Services.AddScoped<ISucursalRepository, SucursalRepository>();
-                // COMPRAS
-            builder.Services.AddScoped<ICompraRepository, CompraRepository>();
                 // FACTURAS 
             builder.Services.AddScoped<IFacturaRepository, FacturaRepository>();
-                // MEDICAMENTOS
-            builder.Services.AddScoped<IMedicamentoRepository, MedicamentoRepository>();
-                // PRODUCTOS
+                //PRODUCTOS
             builder.Services.AddScoped<IProductoRepository, ProductoRepository>();
-                // DETALLE DE COMPRA
-            builder.Services.AddScoped<IDetalleCompraRepository, DetalleCompraRepository>();
-                // EMPLEADOS
-            builder.Services.AddScoped<IEmpleadoRepostiory, EmpleadoRepository>();
-                // REPARTIDOR
-            builder.Services.AddScoped<IRepartidorRepository, RepartidorRepository>();
 
             //FEATURES
                 //FACTURA
             builder.Services.AddScoped<GetFacturasHandler>();
             builder.Services.AddScoped<GetFacturasByFiltersHandler>();
+            builder.Services.AddScoped<PostFacturaHandler>();
+
+                //PRODUCTOS
+            builder.Services.AddScoped<GetProductosHandler>();
+            builder.Services.AddScoped<GetProductosByFiltersHandler>();
 
             var app = builder.Build();
 

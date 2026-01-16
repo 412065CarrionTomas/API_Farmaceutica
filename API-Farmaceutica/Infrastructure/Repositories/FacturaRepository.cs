@@ -47,5 +47,25 @@ namespace API_Farmaceutica.Infrastructure.Repositories
             .Include(x => x.DetallesFacturas)
             .Where(condicion)
             .ToListAsync();
+
+        public async Task<bool> InsertFacturaAsync(Facturas factura)
+        {
+            await _Context.Facturas.AddAsync(factura);
+
+            return await _Context.SaveChangesAsync() > 0;
+        }
+
+        public async Task<bool> UpdateFacturaAsync(Facturas request, int id)
+        {
+            Facturas? facturaId = await _Context.Facturas.FindAsync(id);
+            if(facturaId == null) { return false; }
+            facturaId.FechaFacturacion = request.FechaFacturacion;
+            facturaId.Sucursalid = request.Sucursalid;
+            facturaId.Empleadoid = request.Empleadoid;
+            facturaId.Clienteid = request.Clienteid;
+            facturaId.MetodoPagoid = request.MetodoPagoid;
+            facturaId.DetallesFacturas = request.DetallesFacturas;
+            return await _Context.SaveChangesAsync() > 0;
+        }
     }
 }

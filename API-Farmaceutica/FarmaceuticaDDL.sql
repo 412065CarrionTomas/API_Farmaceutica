@@ -370,6 +370,23 @@ CREATE TABLE empleados_sucursales (
     CONSTRAINT fk_empsuc_sucursales FOREIGN KEY (sucursalid) REFERENCES sucursales(sucursalid)
 );
 
+--Modificacion de tablas detalles-facturas
+--ALTER TABLE detalles_facturas
+--DROP CONSTRAINT pk_detalles_facturas;
+
+--alter table detalles_facturas
+--add constraint detalles_facturas_pkey
+--PRIMARY KEY (nro_detalleid)
+
+--alter table detalles_compras
+--drop constraint pk_detalles_compras
+
+--alter table detalles_compras
+--add constraint detalles_compras_pkey
+--PRIMARY KEY (detalle_compraid)
+
+
+
 -- Columnas 'activo' agregadas
 ALTER TABLE compras ADD COLUMN activo BOOLEAN;
 ALTER TABLE detalles_compras ADD COLUMN activo BOOLEAN;
@@ -453,6 +470,10 @@ BEGIN
         (SELECT lp.lote_productoid FROM lotes_productos lp WHERE lp.lote_productoid = loteproducto);
 END;
 $$;
+
+CREATE FUNCTION sp_Insert_factura_detalle(
+	
+)
 
 -- Función equivalente a sp_ganancias_mensuales
 CREATE OR REPLACE FUNCTION sp_ganancias_mensuales(anio INT)

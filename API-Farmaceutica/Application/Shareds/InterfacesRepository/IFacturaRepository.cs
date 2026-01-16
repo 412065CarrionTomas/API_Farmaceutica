@@ -1,4 +1,5 @@
-﻿using Domain.Models;
+﻿using API_Farmaceutica.Application.Features.FacturasFeatures.PostFactura;
+using Domain.Models;
 using System.Linq.Expressions;
 
 namespace API_Farmaceutica.Application.Shareds.InterfacesRepository
@@ -13,5 +14,7 @@ namespace API_Farmaceutica.Application.Shareds.InterfacesRepository
         Task<List<sp_ventas_por_sucursalResult>> GetVentasPorSucursalAsync(int? anio);
         Task<List<Facturas>> GetFacturasAsync();
         Task<List<Facturas>> GetFacturasByFiltersAsync(Expression<Func<Facturas,bool>> condicion);
+        Task<bool> InsertFacturaAsync(Facturas request);
+        Task<bool> UpdateFacturaAsync(Facturas request, int id);
     }
 }

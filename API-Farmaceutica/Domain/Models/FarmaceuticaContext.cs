@@ -273,13 +273,15 @@ public partial class FarmaceuticaContext : DbContext
 
         modelBuilder.Entity<DetallesCompras>(entity =>
         {
-            entity.HasKey(e => e.DetalleCompraid).HasName("detalles_compras_pkey");
+            entity.HasKey(e => new { e.DetalleCompraid, e.Compraid }).HasName("pk_detalles_compras");
 
             entity.ToTable("detalles_compras");
 
             entity.Property(e => e.DetalleCompraid)
+                .ValueGeneratedOnAdd()
                 .UseIdentityAlwaysColumn()
                 .HasColumnName("detalle_compraid");
+            entity.Property(e => e.Compraid).HasColumnName("compraid");
             entity.Property(e => e.Activo).HasColumnName("activo");
             entity.Property(e => e.Cantidad).HasColumnName("cantidad");
             entity.Property(e => e.CodigoBarraMedicamentoid)
@@ -288,7 +290,6 @@ public partial class FarmaceuticaContext : DbContext
             entity.Property(e => e.CodigoBarraProductoid)
                 .HasMaxLength(150)
                 .HasColumnName("codigo_barra_productoid");
-            entity.Property(e => e.Compraid).HasColumnName("compraid");
             entity.Property(e => e.LoteMedicamentoid).HasColumnName("lote_medicamentoid");
             entity.Property(e => e.LoteProductoid).HasColumnName("lote_productoid");
 
@@ -308,17 +309,18 @@ public partial class FarmaceuticaContext : DbContext
 
         modelBuilder.Entity<DetallesFacturas>(entity =>
         {
-            entity.HasKey(e => e.NroDetalleid).HasName("detalles_facturas_pkey");
+            entity.HasKey(e => new { e.Facturaid, e.NroDetalleid }).HasName("pk_detalles_facturas");
 
             entity.ToTable("detalles_facturas");
 
+            entity.Property(e => e.Facturaid).HasColumnName("facturaid");
             entity.Property(e => e.NroDetalleid)
+                .ValueGeneratedOnAdd()
                 .UseIdentityAlwaysColumn()
                 .HasColumnName("nro_detalleid");
             entity.Property(e => e.Cantidad).HasColumnName("cantidad");
             entity.Property(e => e.Coberturaid).HasColumnName("coberturaid");
             entity.Property(e => e.Descuentoid).HasColumnName("descuentoid");
-            entity.Property(e => e.Facturaid).HasColumnName("facturaid");
             entity.Property(e => e.Medicamentoid).HasColumnName("medicamentoid");
             entity.Property(e => e.Precio)
                 .HasPrecision(12, 2)
@@ -335,6 +337,7 @@ public partial class FarmaceuticaContext : DbContext
 
             entity.HasOne(d => d.Factura).WithMany(p => p.DetallesFacturas)
                 .HasForeignKey(d => d.Facturaid)
+                .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("fk_detfac_facturas");
 
             entity.HasOne(d => d.Medicamento).WithMany(p => p.DetallesFacturas)

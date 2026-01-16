@@ -2,7 +2,6 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
-using System.Text.Json.Serialization;
 
 namespace Domain.Models;
 
@@ -19,14 +18,14 @@ public partial class Facturas
     public int? Sucursalid { get; set; }
 
     public int? MetodoPagoid { get; set; }
-    [JsonIgnore]
+
     public virtual Clientes Cliente { get; set; }
-    [JsonIgnore]
+
     public virtual ICollection<DetallesFacturas> DetallesFacturas { get; set; } = new List<DetallesFacturas>();
-    [JsonIgnore]
+
     public virtual Empleados Empleado { get; set; }
-    [JsonIgnore]
+
     public virtual MetodosPagos MetodoPago { get; set; }
-    [JsonIgnore]
+
     public virtual Sucursales Sucursal { get; set; }
 }

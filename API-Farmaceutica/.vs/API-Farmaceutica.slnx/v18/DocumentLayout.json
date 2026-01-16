@@ -3,12 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\carri\\CARRION\\C#\\WEB-API\\API-FARMACEUTICA-GITHUB\\API-Farmaceutica\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{830BB9D9-25B6-83CC-A48B-66E0A6C02DE5}|API-Farmaceutica.csproj|c:\\users\\carri\\carrion\\c#\\web-api\\api-farmaceutica-github\\api-farmaceutica\\application\\features\\facturasfeatures\\postfactura\\postfacturahandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{830BB9D9-25B6-83CC-A48B-66E0A6C02DE5}|API-Farmaceutica.csproj|solutionrelative:application\\features\\facturasfeatures\\postfactura\\postfacturahandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{830BB9D9-25B6-83CC-A48B-66E0A6C02DE5}|API-Farmaceutica.csproj|c:\\users\\carri\\carrion\\c#\\web-api\\api-farmaceutica-github\\api-farmaceutica\\application\\features\\facturasfeatures\\postfactura\\postfacturarequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{830BB9D9-25B6-83CC-A48B-66E0A6C02DE5}|API-Farmaceutica.csproj|solutionrelative:application\\features\\facturasfeatures\\postfactura\\postfacturarequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{830BB9D9-25B6-83CC-A48B-66E0A6C02DE5}|API-Farmaceutica.csproj|c:\\users\\carri\\carrion\\c#\\web-api\\api-farmaceutica-github\\api-farmaceutica\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{830BB9D9-25B6-83CC-A48B-66E0A6C02DE5}|API-Farmaceutica.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,7 +14,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -34,28 +30,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "PostFacturaRequest.cs",
-              "DocumentMoniker": "C:\\Users\\carri\\CARRION\\C#\\WEB-API\\API-FARMACEUTICA-GITHUB\\API-Farmaceutica\\Application\\Features\\FacturasFeatures\\PostFactura\\PostFacturaRequest.cs",
-              "RelativeDocumentMoniker": "Application\\Features\\FacturasFeatures\\PostFactura\\PostFacturaRequest.cs",
-              "ToolTip": "C:\\Users\\carri\\CARRION\\C#\\WEB-API\\API-FARMACEUTICA-GITHUB\\API-Farmaceutica\\Application\\Features\\FacturasFeatures\\PostFactura\\PostFacturaRequest.cs",
-              "RelativeToolTip": "Application\\Features\\FacturasFeatures\\PostFactura\\PostFacturaRequest.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-04T23:25:36.795Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "PostFacturaHandler.cs",
-              "DocumentMoniker": "C:\\Users\\carri\\CARRION\\C#\\WEB-API\\API-FARMACEUTICA-GITHUB\\API-Farmaceutica\\Application\\Features\\FacturasFeatures\\PostFactura\\PostFacturaHandler.cs",
-              "RelativeDocumentMoniker": "Application\\Features\\FacturasFeatures\\PostFactura\\PostFacturaHandler.cs",
-              "ToolTip": "C:\\Users\\carri\\CARRION\\C#\\WEB-API\\API-FARMACEUTICA-GITHUB\\API-Farmaceutica\\Application\\Features\\FacturasFeatures\\PostFactura\\PostFacturaHandler.cs",
-              "RelativeToolTip": "Application\\Features\\FacturasFeatures\\PostFactura\\PostFacturaHandler.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAABAAAAAAAAAA==",
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\carri\\CARRION\\C#\\WEB-API\\API-FARMACEUTICA-GITHUB\\API-Farmaceutica\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\carri\\CARRION\\C#\\WEB-API\\API-FARMACEUTICA-GITHUB\\API-Farmaceutica\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAQwCkAAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-04T23:25:19.512Z",
+              "WhenOpened": "2026-01-16T13:25:07.93Z",
               "EditorCaption": ""
             }
           ]
