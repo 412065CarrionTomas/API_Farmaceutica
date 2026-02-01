@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "wdivYrbOS7c=",
+  "dgSpecHash": "kG4iu4Gd0Kc=",
   "success": true,
-  "projectFilePath": "C:\\Users\\carri\\CARRION\\C#\\WEB-API\\API-FARMACEUTICA-GITHUB\\API-Farmaceutica\\API-Farmaceutica.csproj",
+  "projectFilePath": "C:\\Users\\carri\\CARRION\\CShrap\\WEB-API\\API-FARMACEUTICA-GITHUB\\API-Farmaceutica\\API-Farmaceutica.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\carri\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\carri\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",

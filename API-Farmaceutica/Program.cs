@@ -29,6 +29,17 @@ namespace API_Farmaceutica
                 });
             builder.Services.AddOpenApi();
 
+            //CORS
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAll", policy =>
+                {
+                    policy.AllowAnyOrigin()
+                          .AllowAnyMethod()
+                          .AllowAnyHeader();
+                });
+            });
+
             //CONTEXT
             builder.Services.AddDbContext<FarmaceuticaContext>(options =>
             options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
@@ -65,6 +76,8 @@ namespace API_Farmaceutica
             }
 
             app.UseHttpsRedirection();
+
+            app.UseCors("AllowAll");
 
             app.UseAuthorization();
 
