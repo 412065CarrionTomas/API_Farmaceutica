@@ -18,9 +18,30 @@ namespace API_Farmaceutica.Application.Features.FacturasFeatures
 
         public async Task<Result<List<GetFacturaResponse>>> HandlerAsync()
         {
-            List<Facturas> facturasLts = await _FacturaRepository.GetFacturasAsync();
-            List<GetFacturaResponse> facturasResponseLts = _Mapper.Map<List<GetFacturaResponse>>(facturasLts);
-            return facturasResponseLts;
+            return await ConsultaBDAsync()
+                .Bind(Mapeo);
+        }
+
+        private async Task<Result<List<Facturas>>> ConsultaBDAsync()
+        {
+            try
+            {
+                return await _FacturaRepository.GetFacturasAsync();
+            }
+            catch (Exception e)
+            {
+                return ResultExtension.Failure<List<Facturas>>($"ERROR en BD:{e.Message}");
+            }
+        }
+        
+        private Result<List<GetFacturaResponse>> Mapeo(List<Facturas> entitys)
+        {
+            List<GetFacturaResponse> result = _Mapper.Map<List<GetFacturaResponse>>(entitys);
+            if(result == null)
+            {
+                return ResultExtension.Failure<List<GetFacturaResponse>>("ERROR en el mapeo");
+            }
+            return result;
         }
     }
 }

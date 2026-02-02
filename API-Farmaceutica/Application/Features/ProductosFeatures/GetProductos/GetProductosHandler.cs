@@ -19,13 +19,13 @@ namespace API_Farmaceutica.Application.Features.ProductosFeatures.GetProductos
 
         public async Task<Result<List<GetProductosResponse>>> HandlerAsync()
         {
-            return await ConsultaBD()
+            return await ConsultaBDAsync()
                 .Bind(Mapeo);
         }
 
         private Result<List<GetProductosResponse>> Mapeo(List<Productos> entitys)
         {
-            var result = _Mapper.Map<List<GetProductosResponse>>(entitys);
+            List<GetProductosResponse> result = _Mapper.Map<List<GetProductosResponse>>(entitys);
             if(result == null)
             {
                 return ResultExtension.Failure<List<GetProductosResponse>>("Error en el mapeo.");
@@ -33,7 +33,7 @@ namespace API_Farmaceutica.Application.Features.ProductosFeatures.GetProductos
             return result;
         }
 
-        private async Task<Result<List<Productos>>> ConsultaBD()
+        private async Task<Result<List<Productos>>> ConsultaBDAsync()
         {
             try
             {

@@ -3,8 +3,28 @@
   "WorkspaceRootPath": "C:\\Users\\carri\\CARRION\\CShrap\\WEB-API\\API-FARMACEUTICA-GITHUB\\API-Farmaceutica\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{830BB9D9-25B6-83CC-A48B-66E0A6C02DE5}|API-Farmaceutica.csproj|c:\\users\\carri\\carrion\\cshrap\\web-api\\api-farmaceutica-github\\api-farmaceutica\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{830BB9D9-25B6-83CC-A48B-66E0A6C02DE5}|API-Farmaceutica.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{830BB9D9-25B6-83CC-A48B-66E0A6C02DE5}|API-Farmaceutica.csproj|c:\\users\\carri\\carrion\\cshrap\\web-api\\api-farmaceutica-github\\api-farmaceutica\\application\\features\\productosfeatures\\getproductos\\getproductoshandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{830BB9D9-25B6-83CC-A48B-66E0A6C02DE5}|API-Farmaceutica.csproj|solutionrelative:application\\features\\productosfeatures\\getproductos\\getproductoshandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{830BB9D9-25B6-83CC-A48B-66E0A6C02DE5}|API-Farmaceutica.csproj|c:\\users\\carri\\carrion\\cshrap\\web-api\\api-farmaceutica-github\\api-farmaceutica\\application\\features\\productosfeatures\\getproductosbyfilters\\getproductosbyfiltershandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{830BB9D9-25B6-83CC-A48B-66E0A6C02DE5}|API-Farmaceutica.csproj|solutionrelative:application\\features\\productosfeatures\\getproductosbyfilters\\getproductosbyfiltershandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{830BB9D9-25B6-83CC-A48B-66E0A6C02DE5}|API-Farmaceutica.csproj|c:\\users\\carri\\carrion\\cshrap\\web-api\\api-farmaceutica-github\\api-farmaceutica\\application\\features\\facturasfeatures\\postfactura\\postfacturahandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{830BB9D9-25B6-83CC-A48B-66E0A6C02DE5}|API-Farmaceutica.csproj|solutionrelative:application\\features\\facturasfeatures\\postfactura\\postfacturahandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{830BB9D9-25B6-83CC-A48B-66E0A6C02DE5}|API-Farmaceutica.csproj|c:\\users\\carri\\carrion\\cshrap\\web-api\\api-farmaceutica-github\\api-farmaceutica\\application\\features\\facturasfeatures\\putfactura\\putfacturahandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{830BB9D9-25B6-83CC-A48B-66E0A6C02DE5}|API-Farmaceutica.csproj|solutionrelative:application\\features\\facturasfeatures\\putfactura\\putfacturahandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{830BB9D9-25B6-83CC-A48B-66E0A6C02DE5}|API-Farmaceutica.csproj|c:\\users\\carri\\carrion\\cshrap\\web-api\\api-farmaceutica-github\\api-farmaceutica\\application\\features\\facturasfeatures\\getfacturasbyfilters\\getfacturasbyfiltershandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{830BB9D9-25B6-83CC-A48B-66E0A6C02DE5}|API-Farmaceutica.csproj|solutionrelative:application\\features\\facturasfeatures\\getfacturasbyfilters\\getfacturasbyfiltershandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{830BB9D9-25B6-83CC-A48B-66E0A6C02DE5}|API-Farmaceutica.csproj|c:\\users\\carri\\carrion\\cshrap\\web-api\\api-farmaceutica-github\\api-farmaceutica\\application\\features\\facturasfeatures\\getfacturas\\getfacturashandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{830BB9D9-25B6-83CC-A48B-66E0A6C02DE5}|API-Farmaceutica.csproj|solutionrelative:application\\features\\facturasfeatures\\getfacturas\\getfacturashandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,8 +34,86 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 2,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "PostFacturaHandler.cs",
+              "DocumentMoniker": "C:\\Users\\carri\\CARRION\\CShrap\\WEB-API\\API-FARMACEUTICA-GITHUB\\API-Farmaceutica\\Application\\Features\\FacturasFeatures\\PostFactura\\PostFacturaHandler.cs",
+              "RelativeDocumentMoniker": "Application\\Features\\FacturasFeatures\\PostFactura\\PostFacturaHandler.cs",
+              "ToolTip": "C:\\Users\\carri\\CARRION\\CShrap\\WEB-API\\API-FARMACEUTICA-GITHUB\\API-Farmaceutica\\Application\\Features\\FacturasFeatures\\PostFactura\\PostFacturaHandler.cs",
+              "RelativeToolTip": "Application\\Features\\FacturasFeatures\\PostFactura\\PostFacturaHandler.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAQwBYAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-02T15:57:47.664Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "PutFacturaHandler.cs",
+              "DocumentMoniker": "C:\\Users\\carri\\CARRION\\CShrap\\WEB-API\\API-FARMACEUTICA-GITHUB\\API-Farmaceutica\\Application\\Features\\FacturasFeatures\\PutFactura\\PutFacturaHandler.cs",
+              "RelativeDocumentMoniker": "Application\\Features\\FacturasFeatures\\PutFactura\\PutFacturaHandler.cs",
+              "ToolTip": "C:\\Users\\carri\\CARRION\\CShrap\\WEB-API\\API-FARMACEUTICA-GITHUB\\API-Farmaceutica\\Application\\Features\\FacturasFeatures\\PutFactura\\PutFacturaHandler.cs",
+              "RelativeToolTip": "Application\\Features\\FacturasFeatures\\PutFactura\\PutFacturaHandler.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAAwBYAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-02T15:56:51.808Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "GetProductosHandler.cs",
+              "DocumentMoniker": "C:\\Users\\carri\\CARRION\\CShrap\\WEB-API\\API-FARMACEUTICA-GITHUB\\API-Farmaceutica\\Application\\Features\\ProductosFeatures\\GetProductos\\GetProductosHandler.cs",
+              "RelativeDocumentMoniker": "Application\\Features\\ProductosFeatures\\GetProductos\\GetProductosHandler.cs",
+              "ToolTip": "C:\\Users\\carri\\CARRION\\CShrap\\WEB-API\\API-FARMACEUTICA-GITHUB\\API-Farmaceutica\\Application\\Features\\ProductosFeatures\\GetProductos\\GetProductosHandler.cs",
+              "RelativeToolTip": "Application\\Features\\ProductosFeatures\\GetProductos\\GetProductosHandler.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAA0AAABaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-02T15:41:24.137Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "GetFacturasByFiltersHandler.cs",
+              "DocumentMoniker": "C:\\Users\\carri\\CARRION\\CShrap\\WEB-API\\API-FARMACEUTICA-GITHUB\\API-Farmaceutica\\Application\\Features\\FacturasFeatures\\GetFacturasByFilters\\GetFacturasByFiltersHandler.cs",
+              "RelativeDocumentMoniker": "Application\\Features\\FacturasFeatures\\GetFacturasByFilters\\GetFacturasByFiltersHandler.cs",
+              "ToolTip": "C:\\Users\\carri\\CARRION\\CShrap\\WEB-API\\API-FARMACEUTICA-GITHUB\\API-Farmaceutica\\Application\\Features\\FacturasFeatures\\GetFacturasByFilters\\GetFacturasByFiltersHandler.cs",
+              "RelativeToolTip": "Application\\Features\\FacturasFeatures\\GetFacturasByFilters\\GetFacturasByFiltersHandler.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAQwCkAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-02T15:55:12.044Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "GetProductosByFiltersHandler.cs",
+              "DocumentMoniker": "C:\\Users\\carri\\CARRION\\CShrap\\WEB-API\\API-FARMACEUTICA-GITHUB\\API-Farmaceutica\\Application\\Features\\ProductosFeatures\\GetProductosByFilters\\GetProductosByFiltersHandler.cs",
+              "RelativeDocumentMoniker": "Application\\Features\\ProductosFeatures\\GetProductosByFilters\\GetProductosByFiltersHandler.cs",
+              "ToolTip": "C:\\Users\\carri\\CARRION\\CShrap\\WEB-API\\API-FARMACEUTICA-GITHUB\\API-Farmaceutica\\Application\\Features\\ProductosFeatures\\GetProductosByFilters\\GetProductosByFiltersHandler.cs",
+              "RelativeToolTip": "Application\\Features\\ProductosFeatures\\GetProductosByFilters\\GetProductosByFiltersHandler.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAQwBcAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-02T15:54:18.62Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "GetFacturasHandler.cs",
+              "DocumentMoniker": "C:\\Users\\carri\\CARRION\\CShrap\\WEB-API\\API-FARMACEUTICA-GITHUB\\API-Farmaceutica\\Application\\Features\\FacturasFeatures\\GetFacturas\\GetFacturasHandler.cs",
+              "RelativeDocumentMoniker": "Application\\Features\\FacturasFeatures\\GetFacturas\\GetFacturasHandler.cs",
+              "ToolTip": "C:\\Users\\carri\\CARRION\\CShrap\\WEB-API\\API-FARMACEUTICA-GITHUB\\API-Farmaceutica\\Application\\Features\\FacturasFeatures\\GetFacturas\\GetFacturasHandler.cs",
+              "RelativeToolTip": "Application\\Features\\FacturasFeatures\\GetFacturas\\GetFacturasHandler.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAQwBUAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-02T15:41:28.919Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{40ea2e6b-2121-4bb8-a43e-c83c04b51041}"
@@ -27,19 +125,6 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\carri\\CARRION\\CShrap\\WEB-API\\API-FARMACEUTICA-GITHUB\\API-Farmaceutica\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Users\\carri\\CARRION\\CShrap\\WEB-API\\API-FARMACEUTICA-GITHUB\\API-Farmaceutica\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAD8AAAAAAAAAAAAQwEMAAAAfAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-16T13:25:07.93Z",
-              "EditorCaption": ""
             }
           ]
         }
