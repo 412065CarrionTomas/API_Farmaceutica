@@ -1,12 +1,10 @@
-﻿using API_Farmaceutica.Application.Features.JWTFeatures.Register;
+﻿using API_Farmaceutica.Application.Features.JWTFeatures.Login;
+using API_Farmaceutica.Application.Features.JWTFeatures.Register;
+using API_Farmaceutica.Application.Features.JWTFeatures.TokenGenerator;
 using Domain.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.IdentityModel.Tokens;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Text;
-using System.Threading.Tasks;
+using System.Runtime.ExceptionServices;
 
 namespace API_Farmaceutica.Application.Features.JWTFeatures.UseGeneric
 {
@@ -14,42 +12,51 @@ namespace API_Farmaceutica.Application.Features.JWTFeatures.UseGeneric
     [ApiController]
     public class AuthController : ControllerBase
     {
-        private readonly GenerateToken _GenerateToken;
-        private readonly Authenticate _Authenticate;
+        private readonly RegisterUsuarioHandler _registerUsuarioHandler;
+        private readonly LoginUsuarioHandler _loginUsuarioHandler;
+        private readonly GenerateToken _generateToken;
 
-        public AuthController(GenerateToken generateToken, Authenticate authenticate)
+        public AuthController(RegisterUsuarioHandler registerUsuarioHandler, GenerateToken generateToken, LoginUsuarioHandler loginUsuarioHandler)
         {
-            _GenerateToken = generateToken;
-            _Authenticate = authenticate;
+            _registerUsuarioHandler = registerUsuarioHandler;
+            _generateToken = generateToken;
+            _loginUsuarioHandler = loginUsuarioHandler;
         }
 
-
         [HttpPost("register")]
-        public async Task<ActionResult<Usuarios>> RegisterEndpoint(GetUsuarioRegisterRequest request)
+        public async Task<ActionResult<string>> Register(GetUsuarioRegisterRequest request)
         {
-            Usuarios? usuario = await _Authenticate.RegisterUsuarioAsync(request);
-
-            if(usuario == null)
+            try
             {
-                return BadRequest("Usuario ya existe.");
+                var result = await _registerUsuarioHandler.HandlerAsync(request);
+                if (result.Value == null)
+                    return BadRequest(result.Errors);
+                return Ok(result.Value);
             }
-
-            return Ok(usuario);
+            catch (Exception e)
+            {
+                ExceptionDispatchInfo.Capture(e).Throw();
+                throw;
+            }
         }
 
         [HttpPost("login")]
-        public async Task<ActionResult<string>> LoginEndpoint(GetUsuarioRegisterRequest request)
+        public async Task<ActionResult<string>> Login(GetUsuarioLoginRequest request)
         {
-            Usuarios? usuario = await _Authenticate.LoginUsuarioAsync(request);
-
-            if(usuario == null)
+            try
             {
-                return BadRequest("Credenciales inválidas. Usuario o contraseña incorrectos.");
+                var usuarioLogged = await _loginUsuarioHandler.HandlerAsync(request);
+                if (usuarioLogged.Value == null)
+                    return BadRequest(usuarioLogged.Errors);
+
+                string userToken = _generateToken.GenToken(usuarioLogged.Value);
+                return Ok(userToken);
             }
-
-            string userToken = _GenerateToken.GenToken(usuario);
-
-            return Ok(userToken);
+            catch (Exception e)
+            {
+                ExceptionDispatchInfo.Capture(e).Throw();
+                throw;
+            }
         }
 
         

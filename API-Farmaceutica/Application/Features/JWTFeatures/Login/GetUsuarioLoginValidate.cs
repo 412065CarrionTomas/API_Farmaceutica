@@ -1,6 +1,7 @@
 ﻿using API_Farmaceutica.Application.Features.JWTFeatures.Register;
 using API_Farmaceutica.Application.Shareds.ROP;
 using System.Collections.Immutable;
+using System.Text.RegularExpressions;
 
 namespace API_Farmaceutica.Application.Features.JWTFeatures.Login
 {
@@ -15,6 +16,10 @@ namespace API_Farmaceutica.Application.Features.JWTFeatures.Login
                 errors.Add("Debe ingresar contrasenia.");
             if (request.Rol == null)
                 errors.Add("El campo rol no puede estar vacio.");
+
+            var emailRegex = new Regex(@"^[^@\s]+@[^@\s]+\.[^@\s]+$");
+            if (!emailRegex.IsMatch(request.Email))
+                errors.Add("El email debe ser válido.");
 
             string[] rolesPermitidos = new[] { "Admin", "User" };
             if (!rolesPermitidos.Contains(request.Rol))

@@ -24,7 +24,7 @@ namespace API_Farmaceutica.Application.Features.JWTFeatures.Login
         }
 
 
-        public async Task<Result<string>> HandlerAsync(GetUsuarioLoginRequest request)
+        public async Task<Result<Usuarios>> HandlerAsync(GetUsuarioLoginRequest request)
         {
             return await GetUsuarioLoginValidate.ValidateRequest(request)
                 .Bind(Mapeo)
@@ -39,48 +39,25 @@ namespace API_Farmaceutica.Application.Features.JWTFeatures.Login
             return usuario;
         }
 
-        private async Task<Result<string>> ConsultaBDAsync(Usuarios usuario)
+        private async Task<Result<Usuarios>> ConsultaBDAsync(Usuarios usuario)
         {
             try
             {
                 Usuarios user = await _UsuarioRepository.LoginAsync(usuario);
                 if(user == null)
                 {
-                    return ResultExtension.Failure<string>("Error al ingresar usuario o contrasenia.");
+                    return ResultExtension.Failure<Usuarios>("Error al ingresar usuario o contrasenia.");
                 }
 
-                return GenToken(user);
+                return user;
             }
             catch (Exception ex)
             {
-                return ResultExtension.Failure<string>("Error en la BD " + ex.Message);
+                return ResultExtension.Failure<Usuarios>("Error en la BD " + ex.Message);
             }
         }
 
-        private string GenToken(Usuarios usuario)
-        {
-            var claims = new List<Claim>
-            {
-                new Claim(ClaimTypes.NameIdentifier, usuario.Id.ToString()),
-                new Claim(ClaimTypes.Email, usuario.Email),
-                new Claim(ClaimTypes.Role, usuario.Rol.ToString())
-            };
-
-            var key = new SymmetricSecurityKey(
-                Encoding.UTF8.GetBytes(_Configuration.GetValue<string>("Jwt:Key")!));
-
-            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-
-            var tokenDescriptor = new JwtSecurityToken(
-                issuer: _Configuration.GetValue<string>("Jwt:Issuer"),
-                audience: _Configuration.GetValue<string>("Jwt:Audience"),
-                claims: claims,
-                expires: DateTime.UtcNow.AddMinutes(60),
-                signingCredentials: creds
-                );
-            return new JwtSecurityTokenHandler().WriteToken(tokenDescriptor);
-
-        }
+        
 
     }
 }

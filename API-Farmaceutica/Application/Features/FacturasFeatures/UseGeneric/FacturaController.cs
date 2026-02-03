@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Mvc;
 using API_Farmaceutica.Application.Shareds.ROP;
 using System.Runtime.ExceptionServices;
-using Microsoft.VisualBasic;
 using API_Farmaceutica.Application.Features.FacturasFeatures.PostFactura;
 
 namespace API_Farmaceutica.Application.Features.FacturasFeatures.UseGeneric

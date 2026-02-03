@@ -15,7 +15,7 @@ namespace API_Farmaceutica.Application.Features.JWTFeatures.Register
             _Mapper = mapper;
         }
 
-        public async Task<Result<string>?> HandlerAsync(GetUsuarioRegisterRequest request)
+        public async Task<Result<string>> HandlerAsync(GetUsuarioRegisterRequest request)
         {
             return await GetUsuarioRegisterValidate.ValidateRequest(request)
                 .Bind(Mapeo)
@@ -38,7 +38,7 @@ namespace API_Farmaceutica.Application.Features.JWTFeatures.Register
         {
             Usuarios usuario = _Mapper.Map<Usuarios>(request);
             if (usuario == null)
-                ResultExtension.Failure<Usuarios>("Error en el mapeo.");
+                return ResultExtension.Failure<Usuarios>("Error en el mapeo.");
             return usuario;
         }
     }
