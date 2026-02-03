@@ -87,12 +87,16 @@ public partial class FarmaceuticaContext : DbContext
 
     public virtual DbSet<UnidadesMedidas> UnidadesMedidas { get; set; }
 
+    public virtual DbSet<Usuarios> Usuarios { get; set; }
+
     public virtual DbSet<Vwmedicamentotop> Vwmedicamentotop { get; set; }
 
     public virtual DbSet<Vwproductotop> Vwproductotop { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.HasPostgresExtension("uuid-ossp");
+
         modelBuilder.Entity<Afiliados>(entity =>
         {
             entity.HasKey(e => e.Afiliadoid).HasName("afiliados_pkey");
@@ -273,15 +277,13 @@ public partial class FarmaceuticaContext : DbContext
 
         modelBuilder.Entity<DetallesCompras>(entity =>
         {
-            entity.HasKey(e => new { e.DetalleCompraid, e.Compraid }).HasName("pk_detalles_compras");
+            entity.HasKey(e => e.DetalleCompraid).HasName("detalles_compras_pkey");
 
             entity.ToTable("detalles_compras");
 
             entity.Property(e => e.DetalleCompraid)
-                .ValueGeneratedOnAdd()
                 .UseIdentityAlwaysColumn()
                 .HasColumnName("detalle_compraid");
-            entity.Property(e => e.Compraid).HasColumnName("compraid");
             entity.Property(e => e.Activo).HasColumnName("activo");
             entity.Property(e => e.Cantidad).HasColumnName("cantidad");
             entity.Property(e => e.CodigoBarraMedicamentoid)
@@ -290,6 +292,7 @@ public partial class FarmaceuticaContext : DbContext
             entity.Property(e => e.CodigoBarraProductoid)
                 .HasMaxLength(150)
                 .HasColumnName("codigo_barra_productoid");
+            entity.Property(e => e.Compraid).HasColumnName("compraid");
             entity.Property(e => e.LoteMedicamentoid).HasColumnName("lote_medicamentoid");
             entity.Property(e => e.LoteProductoid).HasColumnName("lote_productoid");
 
@@ -309,18 +312,17 @@ public partial class FarmaceuticaContext : DbContext
 
         modelBuilder.Entity<DetallesFacturas>(entity =>
         {
-            entity.HasKey(e => new { e.Facturaid, e.NroDetalleid }).HasName("pk_detalles_facturas");
+            entity.HasKey(e => e.NroDetalleid).HasName("detalles_facturas_pkey");
 
             entity.ToTable("detalles_facturas");
 
-            entity.Property(e => e.Facturaid).HasColumnName("facturaid");
             entity.Property(e => e.NroDetalleid)
-                .ValueGeneratedOnAdd()
                 .UseIdentityAlwaysColumn()
                 .HasColumnName("nro_detalleid");
             entity.Property(e => e.Cantidad).HasColumnName("cantidad");
             entity.Property(e => e.Coberturaid).HasColumnName("coberturaid");
             entity.Property(e => e.Descuentoid).HasColumnName("descuentoid");
+            entity.Property(e => e.Facturaid).HasColumnName("facturaid");
             entity.Property(e => e.Medicamentoid).HasColumnName("medicamentoid");
             entity.Property(e => e.Precio)
                 .HasPrecision(12, 2)
@@ -988,6 +990,26 @@ public partial class FarmaceuticaContext : DbContext
             entity.Property(e => e.Descripcion)
                 .HasMaxLength(200)
                 .HasColumnName("descripcion");
+        });
+
+        modelBuilder.Entity<Usuarios>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("usuarios_pkey");
+
+            entity.ToTable("usuarios");
+
+            entity.Property(e => e.Id)
+                .HasDefaultValueSql("uuid_generate_v4()")
+                .HasColumnName("id");
+            entity.Property(e => e.Email)
+                .IsRequired()
+                .HasColumnName("email");
+            entity.Property(e => e.Passwordhash)
+                .IsRequired()
+                .HasColumnName("passwordhash");
+            entity.Property(e => e.Rol)
+                .IsRequired()
+                .HasColumnName("rol");
         });
 
         modelBuilder.Entity<Vwmedicamentotop>(entity =>

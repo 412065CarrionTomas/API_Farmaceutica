@@ -1,7 +1,9 @@
 ﻿using API_Farmaceutica.Application.Features.ProductosFeatures.GetProductos;
 using API_Farmaceutica.Application.Features.ProductosFeatures.GetProductosByFilters;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Runtime.ExceptionServices;
+using System.Security.Claims;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -22,9 +24,11 @@ namespace API_Farmaceutica.Application.Features.ProductosFeatures.UseGeneric
         }
 
         // GET: api/<ProductosController>
+        [Authorize(Policy = "AdminOnly")]
         [HttpGet("obtener_productos")]
-        public async Task<IActionResult> GetAll()
+        public async Task<dynamic> GetAll()
         {
+
             try
             {
                 var result = await _GetProductosHandler.HandlerAsync();

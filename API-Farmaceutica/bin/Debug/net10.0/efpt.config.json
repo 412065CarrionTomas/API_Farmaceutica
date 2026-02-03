@@ -167,6 +167,10 @@
          "ObjectType": 0
       },
       {
+         "Name": "public.usuarios",
+         "ObjectType": 0
+      },
+      {
          "Name": "public.vwmedicamentotop",
          "ObjectType": 3
       },
