@@ -16,9 +16,9 @@ namespace API_Farmaceutica.Application.Features.FacturasFeatures.PutFactura
             _Mapper = mapper;
         }
 
-        public async Task<Result<string>> PutFacturaHandlerAsync(PutFacturaRequest request)
+        public async Task<Result<string>> HandlerAsync(PutFacturaRequest request)
         {
-            return await PutFacturaValidate.PutFacturaValidateRequest(request)
+            return await PutFacturaValidate.ValidateRequest(request)
                 .Bind(Mapeo)
                 .Bind(ConsultaBDAsync);
         }

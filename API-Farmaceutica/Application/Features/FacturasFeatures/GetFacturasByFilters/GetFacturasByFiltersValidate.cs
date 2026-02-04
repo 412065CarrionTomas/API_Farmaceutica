@@ -8,7 +8,7 @@ namespace API_Farmaceutica.Application.Features.FacturasFeatures.GetFacturasByFi
     public static class GetFacturasByFiltersValidate
     {
 
-        public static Result<GetFacturasByFiltersRequest> GetFacturasByFiltersValidateRequest(GetFacturasByFiltersRequest request)
+        public static Result<GetFacturasByFiltersRequest> ValidateRequest(GetFacturasByFiltersRequest request)
         {
             List<string>? errors = new List<string>();
             if (request.FacturaID <= 0)

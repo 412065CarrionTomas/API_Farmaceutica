@@ -1,6 +1,4 @@
-﻿using API_Farmaceutica.Application.Features.JWTFeatures.Authenticate;
-using API_Farmaceutica.Application.Shareds.InterfacesRepository;
-using API_Farmaceutica.Application.Shareds.ROP;
+﻿using API_Farmaceutica.Application.Shareds.InterfacesRepository;
 using Domain.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;

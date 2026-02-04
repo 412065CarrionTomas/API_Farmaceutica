@@ -5,7 +5,7 @@ namespace API_Farmaceutica.Application.Features.FacturasFeatures.PutFactura
 {
     public static class PutFacturaValidate
     {
-        public static Result<PutFacturaRequest> PutFacturaValidateRequest(PutFacturaRequest request)
+        public static Result<PutFacturaRequest> ValidateRequest(PutFacturaRequest request)
         {
             List<string>? errors = new List<string>();
             if (request.Clienteid <= 0)

@@ -34,7 +34,7 @@ namespace API_Farmaceutica.Application.Features.ProductosFeatures.UseGeneric
                 var result = await _GetProductosHandler.HandlerAsync();
                 if(result.Value == null || result.Value.Count == 0) 
                 { 
-                    return NotFound("No se encontro ningun producto."); 
+                    return NotFound(result.Errors); 
                 }
                 return Ok(result.Value);
             }
@@ -54,7 +54,7 @@ namespace API_Farmaceutica.Application.Features.ProductosFeatures.UseGeneric
                 var result = await _GetProductoByFiltersHandler.HandlerAsync(request);
                 if(result.Value == null || result.Value.Count == 0)
                 {
-                    return NotFound("No se encontro ningun producto con esos filtros.");
+                    return NotFound(result.Errors);
                 }
                 return Ok(result.Value);
             }
@@ -64,23 +64,5 @@ namespace API_Farmaceutica.Application.Features.ProductosFeatures.UseGeneric
                 throw;
             }
         }
-
-        //// POST api/<ProductosController>
-        //[HttpPost]
-        //public void Post([FromBody] string value)
-        //{
-        //}
-
-        //// PUT api/<ProductosController>/5
-        //[HttpPut("{id}")]
-        //public void Put(int id, [FromBody] string value)
-        //{
-        //}
-
-        //// DELETE api/<ProductosController>/5
-        //[HttpDelete("{id}")]
-        //public void Delete(int id)
-        //{
-        //}
     }
 }

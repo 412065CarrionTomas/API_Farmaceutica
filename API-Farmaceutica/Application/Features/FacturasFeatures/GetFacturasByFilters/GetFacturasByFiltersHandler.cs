@@ -17,14 +17,14 @@ namespace API_Farmaceutica.Application.Features.FacturasFeatures.GetFacturasByFi
             _FacturaRepository = facturaRepository;
         }
 
-        public async Task<Result<List<GetFacturasByFiltersResponse>>> GetFacturasHandlerAsync(GetFacturasByFiltersRequest request)
+        public async Task<Result<List<GetFacturasByFiltersResponse>>> HandlerAsync(GetFacturasByFiltersRequest request)
         {
-            return await GetFacturasByFiltersValidate.GetFacturasByFiltersValidateRequest(request)
-                .Bind(ConsultaBD)
+            return await GetFacturasByFiltersValidate.ValidateRequest(request)
+                .Bind(ConsultaBDAsync)
                 .Bind(Mapeo);
         }
 
-        private async Task<Result<List<Facturas>>> ConsultaBD(GetFacturasByFiltersRequest request)
+        private async Task<Result<List<Facturas>>> ConsultaBDAsync(GetFacturasByFiltersRequest request)
         {
             Expression<Func<Facturas, bool>> condicion = x =>
             (request.FacturaID == null || x.Facturaid.Equals(request.FacturaID)) &&

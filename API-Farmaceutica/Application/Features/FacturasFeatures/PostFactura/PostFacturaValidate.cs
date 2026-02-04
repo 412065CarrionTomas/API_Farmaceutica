@@ -9,7 +9,7 @@ namespace API_Farmaceutica.Application.Features.FacturasFeatures.PostFactura
 {
     public static class PostFacturaValidate
     {
-        public static Result<PostFacturaRequest> PostFacturaValidateRequest(PostFacturaRequest request)
+        public static Result<PostFacturaRequest> ValidateRequest(PostFacturaRequest request)
         {
             List<string>? errors = new List<string>();
             if (request.Clienteid <= 0)

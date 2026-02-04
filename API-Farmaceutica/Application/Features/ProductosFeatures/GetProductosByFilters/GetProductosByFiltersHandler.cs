@@ -19,7 +19,7 @@ namespace API_Farmaceutica.Application.Features.ProductosFeatures.GetProductosBy
 
         public async Task<Result<List<GetProductosByFiltersResponse>>> HandlerAsync(GetProductosByFiltersRequest request)
         {
-            return await GetProductosByFiltersValidate.GetProductosByFiltersValidateRequest(request)
+            return await GetProductosByFiltersValidate.ValidateRequest(request)
                 .Bind(ConsultaBDAsync)
                 .Bind(Mapeo);
         }

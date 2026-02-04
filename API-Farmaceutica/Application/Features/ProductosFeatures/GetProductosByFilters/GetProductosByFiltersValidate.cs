@@ -5,7 +5,7 @@ namespace API_Farmaceutica.Application.Features.ProductosFeatures.GetProductosBy
 {
     public static class GetProductosByFiltersValidate
     {
-        public static Result<GetProductosByFiltersRequest> GetProductosByFiltersValidateRequest(GetProductosByFiltersRequest request)
+        public static Result<GetProductosByFiltersRequest> ValidateRequest(GetProductosByFiltersRequest request)
         {
             List<string> errors = new List<string>();
             if (request == null)

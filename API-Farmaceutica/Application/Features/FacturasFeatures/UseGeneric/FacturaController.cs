@@ -45,7 +45,7 @@ namespace API_Farmaceutica.Application.Features.FacturasFeatures.UseGeneric
         {
             try
             {
-                Result<List<GetFacturasByFiltersResponse>> result = await _FacturaByFilters.GetFacturasHandlerAsync(request);
+                Result<List<GetFacturasByFiltersResponse>> result = await _FacturaByFilters.HandlerAsync(request);
                 return result.IsSucces
                     ? Ok(result.Value)
                     : Ok(result.Errors);
@@ -64,7 +64,7 @@ namespace API_Farmaceutica.Application.Features.FacturasFeatures.UseGeneric
             try
             {
                 if (request == null) { return BadRequest("Debe enviar un valor completo."); }
-                var result = await _PostFactura.PostFacturaHandlerAsync(request);
+                var result = await _PostFactura.HandlerAsync(request);
                 return result.IsSucces
                     ? Ok(result.Value)
                     : BadRequest(result.Errors);
@@ -76,16 +76,5 @@ namespace API_Farmaceutica.Application.Features.FacturasFeatures.UseGeneric
             }
         }
 
-        //// PUT api/<FacturaController>/5
-        //[HttpPut("{id}")]
-        //public void Put(int id, [FromBody] string value)
-        //{
-        //}
-
-        //// DELETE api/<FacturaController>/5
-        //[HttpDelete("{id}")]
-        //public void Delete(int id)
-        //{
-        //}
     }
 }

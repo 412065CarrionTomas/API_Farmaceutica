@@ -16,9 +16,9 @@ namespace API_Farmaceutica.Application.Features.FacturasFeatures.PostFactura
             _FacturaRepository = facturaRepository;
         }
 
-        public async Task<Result<string>> PostFacturaHandlerAsync(PostFacturaRequest request)
+        public async Task<Result<string>> HandlerAsync(PostFacturaRequest request)
         {
-            return await PostFacturaValidate.PostFacturaValidateRequest(request)
+            return await PostFacturaValidate.ValidateRequest(request)
                 .Bind(Mapeo)
                 .Bind(ConsultaBDAsync);
         }
