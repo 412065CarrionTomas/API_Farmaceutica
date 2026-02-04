@@ -102,3 +102,22 @@ node_modules/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Build results
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+
+# Visual Studio cache/options
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Static Web Assets
+**/staticwebassets/
+**/*.staticwebassets.*.json
+**/*.staticwebassets.*.cache
+**/*.staticwebassets.*.txt
