@@ -20,7 +20,7 @@ namespace API_Farmaceutica.Application.Features.FacturasFeatures.PutFactura
         {
             return await PutFacturaValidate.PutFacturaValidateRequest(request)
                 .Bind(Mapeo)
-                .Bind(ConsultaBD);
+                .Bind(ConsultaBDAsync);
         }
         
         private Result<Facturas> Mapeo(PutFacturaRequest request)
@@ -33,7 +33,7 @@ namespace API_Farmaceutica.Application.Features.FacturasFeatures.PutFactura
                 : ResultExtension.Failure<Facturas>("Error al mapear la entidad.");
         }
 
-        private async Task<Result<string>> ConsultaBD(Facturas request)
+        private async Task<Result<string>> ConsultaBDAsync(Facturas request)
         {
             try
             {

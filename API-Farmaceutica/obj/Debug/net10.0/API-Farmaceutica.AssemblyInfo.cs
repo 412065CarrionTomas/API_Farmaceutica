@@ -14,7 +14,11 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("API-Farmaceutica")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
+<<<<<<< HEAD
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+16b78d4039770cc14f71972d7e646ea01cd55681")]
+=======
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6de522795f832b7d3cf856afec7611df6adfa789")]
+>>>>>>> Feature-AddJWT
 [assembly: System.Reflection.AssemblyProductAttribute("API-Farmaceutica")]
 [assembly: System.Reflection.AssemblyTitleAttribute("API-Farmaceutica")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -20,11 +20,11 @@ namespace API_Farmaceutica.Application.Features.ProductosFeatures.GetProductosBy
         public async Task<Result<List<GetProductosByFiltersResponse>>> HandlerAsync(GetProductosByFiltersRequest request)
         {
             return await GetProductosByFiltersValidate.GetProductosByFiltersValidateRequest(request)
-                .Bind(ConsultaBD)
+                .Bind(ConsultaBDAsync)
                 .Bind(Mapeo);
         }
 
-        private async Task<Result<List<Productos>>> ConsultaBD(GetProductosByFiltersRequest request)
+        private async Task<Result<List<Productos>>> ConsultaBDAsync(GetProductosByFiltersRequest request)
         {
             Expression<Func<Productos, bool>> condicion = x =>
             (request.ProductoId.Equals(null) || x.Productoid.Equals(request.ProductoId)) &&

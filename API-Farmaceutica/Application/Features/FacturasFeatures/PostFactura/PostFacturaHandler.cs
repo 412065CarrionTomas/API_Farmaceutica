@@ -20,10 +20,10 @@ namespace API_Farmaceutica.Application.Features.FacturasFeatures.PostFactura
         {
             return await PostFacturaValidate.PostFacturaValidateRequest(request)
                 .Bind(Mapeo)
-                .Bind(ConsultarBD);
+                .Bind(ConsultaBDAsync);
         }
 
-        private async Task<Result<string>> ConsultarBD(Facturas request)
+        private async Task<Result<string>> ConsultaBDAsync(Facturas request)
         {
             try
             {

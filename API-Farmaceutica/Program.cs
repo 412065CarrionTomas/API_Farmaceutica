@@ -1,14 +1,20 @@
 using API_Farmaceutica.Application.Features.FacturasFeatures;
 using API_Farmaceutica.Application.Features.FacturasFeatures.GetFacturasByFilters;
 using API_Farmaceutica.Application.Features.FacturasFeatures.PostFactura;
+using API_Farmaceutica.Application.Features.JWTFeatures.Login;
+using API_Farmaceutica.Application.Features.JWTFeatures.Register;
+using API_Farmaceutica.Application.Features.JWTFeatures.TokenGenerator;
 using API_Farmaceutica.Application.Features.ProductosFeatures.GetProductos;
 using API_Farmaceutica.Application.Features.ProductosFeatures.GetProductosByFilters;
 using API_Farmaceutica.Application.Shareds.InterfacesRepository;
 using API_Farmaceutica.Infrastructure.Repositories;
 using Domain.Models;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using Scalar.AspNetCore;
 using System.Reflection;
+using System.Text;
 using System.Text.Json.Serialization;
 
 namespace API_Farmaceutica
@@ -52,17 +58,48 @@ namespace API_Farmaceutica
             builder.Services.AddScoped<IFacturaRepository, FacturaRepository>();
                 //PRODUCTOS
             builder.Services.AddScoped<IProductoRepository, ProductoRepository>();
+                //USUARIOS
+            builder.Services.AddScoped<IUsusarioRepository, UsuarioRepository>();
 
             //FEATURES
                 //FACTURA
             builder.Services.AddScoped<GetFacturasHandler>();
             builder.Services.AddScoped<GetFacturasByFiltersHandler>();
             builder.Services.AddScoped<PostFacturaHandler>();
-
                 //PRODUCTOS
             builder.Services.AddScoped<GetProductosHandler>();
             builder.Services.AddScoped<GetProductosByFiltersHandler>();
+                //JWT
+            builder.Services.AddScoped<RegisterUsuarioHandler>();
+            builder.Services.AddScoped<LoginUsuarioHandler>();
+            builder.Services.AddScoped<GenerateToken>();
 
+            //AddAuthentication
+            builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
+            {
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuer = true,
+                    ValidIssuer = builder.Configuration["Jwt:Issuer"],
+                    ValidateAudience = true,
+                    ValidAudience = builder.Configuration["Jwt:Audience"],
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]!)),
+                    ClockSkew = TimeSpan.Zero
+                };
+            });
+
+            //AddAuthorization
+            builder.Services.AddAuthorization(options =>
+            {
+                options.AddPolicy("AdminOnly", policy =>
+                policy.RequireRole("Admin"));
+
+                options.AddPolicy("UserOrAdmin", policy =>
+                policy.RequireRole("Admin", "User"));
+
+            });
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -79,8 +116,9 @@ namespace API_Farmaceutica
 
             app.UseCors("AllowAll");
 
-            app.UseAuthorization();
+            app.UseAuthentication();
 
+            app.UseAuthorization();
 
             app.MapControllers();
 

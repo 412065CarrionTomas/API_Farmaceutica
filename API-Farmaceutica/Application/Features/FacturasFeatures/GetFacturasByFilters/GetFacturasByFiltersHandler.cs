@@ -40,7 +40,5 @@ namespace API_Farmaceutica.Application.Features.FacturasFeatures.GetFacturasByFi
             List<GetFacturasByFiltersResponse> facturasDTO = _Mapper.Map<List<GetFacturasByFiltersResponse>>(facturas);
             return facturasDTO;
         }
-        //primero filtrar,pasar a la bd y luego mapear. analizar como hacer para que se inteligente
-        //y escalable
     }
 }
