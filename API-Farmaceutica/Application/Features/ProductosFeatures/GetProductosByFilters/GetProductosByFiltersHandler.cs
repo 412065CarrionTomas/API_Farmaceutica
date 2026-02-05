@@ -8,13 +8,13 @@ namespace API_Farmaceutica.Application.Features.ProductosFeatures.GetProductosBy
 {
     public class GetProductosByFiltersHandler
     {
-        private readonly IProductoRepository _ProductoRepository;
-        private readonly IMapper _Mapper;
+        private readonly IProductoRepository _productoRepository;
+        private readonly IMapper _mapper;
 
         public GetProductosByFiltersHandler(IProductoRepository productoRepository, IMapper mapper)
         {
-            _ProductoRepository = productoRepository;
-            _Mapper = mapper;
+            _productoRepository = productoRepository;
+            _mapper = mapper;
         }
 
         public async Task<Result<List<GetProductosByFiltersResponse>>> HandlerAsync(GetProductosByFiltersRequest request)
@@ -45,7 +45,7 @@ namespace API_Farmaceutica.Application.Features.ProductosFeatures.GetProductosBy
 
             try
             {
-                var result = await _ProductoRepository.GetAllProductosByFiltersAsync(condicion);
+                var result = await _productoRepository.GetAllProductosByFiltersAsync(condicion);
                 return result;
             }
             catch (Exception ex)
@@ -57,7 +57,7 @@ namespace API_Farmaceutica.Application.Features.ProductosFeatures.GetProductosBy
 
         private Result<List<GetProductosByFiltersResponse>> Mapeo(List<Productos> entitys )
         {
-            var result = _Mapper.Map<List<GetProductosByFiltersResponse>>(entitys);
+            var result = _mapper.Map<List<GetProductosByFiltersResponse>>(entitys);
             if(result == null)
             {
                 return ResultExtension.Failure<List<GetProductosByFiltersResponse>>("Error en el mapeo.");

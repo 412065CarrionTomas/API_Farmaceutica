@@ -7,16 +7,16 @@ namespace API_Farmaceutica.Infrastructure.Repositories
 {
     public class UsuarioRepository : IUsusarioRepository
     {
-        private readonly FarmaceuticaContext _Context;
+        private readonly FarmaceuticaContext _context;
 
         public UsuarioRepository(FarmaceuticaContext context)
         {
-            _Context = context;
+            _context = context;
         }
 
         public async Task<Usuarios> GetUsuarioByGuid(Guid userId)
         {
-            Usuarios? usuario = await _Context.Usuarios.FindAsync(userId);
+            Usuarios? usuario = await _context.Usuarios.FindAsync(userId);
             if (usuario == null)
                 return null;
             return usuario;
@@ -24,7 +24,7 @@ namespace API_Farmaceutica.Infrastructure.Repositories
 
         public async Task<Usuarios?> LoginAsync(Usuarios usuario)
         {
-            var user = await _Context.Usuarios.FirstOrDefaultAsync(x => 
+            var user = await _context.Usuarios.FirstOrDefaultAsync(x => 
                 x.Email.Equals(usuario.Email));
 
             if (user == null)
@@ -42,7 +42,7 @@ namespace API_Farmaceutica.Infrastructure.Repositories
 
         public async Task RegisterAsync(Usuarios usuario)
         {
-            if (await _Context.Usuarios.AnyAsync(x => x.Email.Equals(usuario.Email) || x.Id.Equals(usuario.Id)))
+            if (await _context.Usuarios.AnyAsync(x => x.Email.Equals(usuario.Email) || x.Id.Equals(usuario.Id)))
             {
                 throw new ArgumentException("Usuario ya existente.");
             }
@@ -55,19 +55,19 @@ namespace API_Farmaceutica.Infrastructure.Repositories
             user.Passwordhash = hashedPassword;
             user.Rol = usuario.Rol;
 
-            await _Context.Usuarios.AddAsync(user);
-            await _Context.SaveChangesAsync();
+            await _context.Usuarios.AddAsync(user);
+            await _context.SaveChangesAsync();
         }
 
         public async Task UpdateUsuario(Usuarios usuario)
         {
-            Usuarios userTrack = await _Context.Usuarios.FirstOrDefaultAsync(x =>
+            Usuarios userTrack = await _context.Usuarios.FirstOrDefaultAsync(x =>
                                 x.Id.Equals(usuario.Id)!);
 
             userTrack.Refreshtoken = usuario.Refreshtoken;
             userTrack.Refreshtokenexpirytime = usuario.Refreshtokenexpirytime;
 
-            await _Context.SaveChangesAsync();
+            await _context.SaveChangesAsync();
         }
     }
 }

@@ -7,15 +7,13 @@ namespace API_Farmaceutica.Application.Features.JWTFeatures.Login
 {
     public class LoginUsuarioHandler
     {
-        private readonly IUsusarioRepository _UsuarioRepository;
-        private readonly IMapper _Mapper;
-        private readonly IConfiguration _Configuration;
+        private readonly IUsusarioRepository _usuarioRepository;
+        private readonly IMapper _mapper;
 
-        public LoginUsuarioHandler(IUsusarioRepository usuarioRepository, IMapper mapper, IConfiguration configuration)
+        public LoginUsuarioHandler(IUsusarioRepository usuarioRepository, IMapper mapper)
         {
-            _UsuarioRepository = usuarioRepository;
-            _Mapper = mapper;
-            _Configuration = configuration;
+            _usuarioRepository = usuarioRepository;
+            _mapper = mapper;
         }
 
 
@@ -28,7 +26,7 @@ namespace API_Farmaceutica.Application.Features.JWTFeatures.Login
 
         private Result<Usuarios> Mapeo(GetUsuarioLoginRequest request)
         {
-            Usuarios usuario = _Mapper.Map<Usuarios>(request);
+            Usuarios usuario = _mapper.Map<Usuarios>(request);
             if (usuario == null)
                 return ResultExtension.Failure<Usuarios>("Hubo un error en el mapeo.");
             return usuario;
@@ -38,7 +36,7 @@ namespace API_Farmaceutica.Application.Features.JWTFeatures.Login
         {
             try
             {
-                Usuarios user = await _UsuarioRepository.LoginAsync(usuario);
+                Usuarios user = await _usuarioRepository.LoginAsync(usuario);
                 if(user == null)
                 {
                     return ResultExtension.Failure<Usuarios>("Error al ingresar usuario o contrasenia.");
@@ -51,8 +49,5 @@ namespace API_Farmaceutica.Application.Features.JWTFeatures.Login
                 return ResultExtension.Failure<Usuarios>("Error en la BD " + ex.Message);
             }
         }
-
-        
-
     }
 }

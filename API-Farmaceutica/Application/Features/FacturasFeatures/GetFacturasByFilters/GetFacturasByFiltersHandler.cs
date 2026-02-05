@@ -8,13 +8,13 @@ namespace API_Farmaceutica.Application.Features.FacturasFeatures.GetFacturasByFi
 {
     public class GetFacturasByFiltersHandler
     {
-        private readonly IFacturaRepository _FacturaRepository;
-        private readonly IMapper _Mapper;
+        private readonly IFacturaRepository _facturaRepository;
+        private readonly IMapper _mapper;
 
         public GetFacturasByFiltersHandler(IMapper mapper, IFacturaRepository facturaRepository)
         {
-            _Mapper = mapper;
-            _FacturaRepository = facturaRepository;
+            _mapper = mapper;
+            _facturaRepository = facturaRepository;
         }
 
         public async Task<Result<List<GetFacturasByFiltersResponse>>> HandlerAsync(GetFacturasByFiltersRequest request)
@@ -32,12 +32,12 @@ namespace API_Farmaceutica.Application.Features.FacturasFeatures.GetFacturasByFi
             (request.EmpleadoID == null || x.Empleadoid.Equals(request.EmpleadoID)) &&
             (request.MetodoPagoID == null || x.MetodoPagoid.Equals(request.MetodoPagoID));
 
-            List<Facturas> facturasFilter = await _FacturaRepository.GetFacturasByFiltersAsync(condicion);
+            List<Facturas> facturasFilter = await _facturaRepository.GetFacturasByFiltersAsync(condicion);
             return facturasFilter;
         }
         private Result<List<GetFacturasByFiltersResponse>> Mapeo(List<Facturas> facturas)
         {
-            List<GetFacturasByFiltersResponse> facturasDTO = _Mapper.Map<List<GetFacturasByFiltersResponse>>(facturas);
+            List<GetFacturasByFiltersResponse> facturasDTO = _mapper.Map<List<GetFacturasByFiltersResponse>>(facturas);
             return facturasDTO;
         }
     }

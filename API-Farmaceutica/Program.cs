@@ -95,6 +95,9 @@ namespace API_Farmaceutica
             //AddAuthorization
             builder.Services.AddAuthorization(options =>
             {
+                options.AddPolicy("UserOnly", policy =>
+                policy.RequireRole("User"));
+
                 options.AddPolicy("AdminOnly", policy =>
                 policy.RequireRole("Admin"));
 

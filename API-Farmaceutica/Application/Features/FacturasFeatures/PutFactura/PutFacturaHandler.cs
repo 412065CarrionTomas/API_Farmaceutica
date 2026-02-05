@@ -7,13 +7,13 @@ namespace API_Farmaceutica.Application.Features.FacturasFeatures.PutFactura
 {
     public class PutFacturaHandler
     {
-        private readonly IMapper _Mapper;
-        private readonly IFacturaRepository _FacturaRepository;
+        private readonly IMapper _mapper;
+        private readonly IFacturaRepository _facturaRepository;
 
         public PutFacturaHandler(IFacturaRepository facturaRepository, IMapper mapper)
         {
-            _FacturaRepository = facturaRepository;
-            _Mapper = mapper;
+            _facturaRepository = facturaRepository;
+            _mapper = mapper;
         }
 
         public async Task<Result<string>> HandlerAsync(PutFacturaRequest request)
@@ -25,7 +25,7 @@ namespace API_Farmaceutica.Application.Features.FacturasFeatures.PutFactura
         
         private Result<Facturas> Mapeo(PutFacturaRequest request)
         {
-            Facturas? factura = _Mapper.Map<Facturas>(request);
+            Facturas? factura = _mapper.Map<Facturas>(request);
             bool result = factura == null || factura.Facturaid <= 0;
 
             return result
@@ -37,7 +37,7 @@ namespace API_Farmaceutica.Application.Features.FacturasFeatures.PutFactura
         {
             try
             {
-                bool result = await _FacturaRepository.UpdateFacturaAsync(request, request.Facturaid);
+                bool result = await _facturaRepository.UpdateFacturaAsync(request, request.Facturaid);
                 return result
                     ? "Exito al cargar usuario"
                     : ResultExtension.Failure<string>("Hubo un error al cargar el usuario en la BD.");

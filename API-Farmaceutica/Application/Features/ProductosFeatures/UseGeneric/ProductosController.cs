@@ -3,9 +3,6 @@ using API_Farmaceutica.Application.Features.ProductosFeatures.GetProductosByFilt
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Runtime.ExceptionServices;
-using System.Security.Claims;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace API_Farmaceutica.Application.Features.ProductosFeatures.UseGeneric
 {
@@ -13,25 +10,25 @@ namespace API_Farmaceutica.Application.Features.ProductosFeatures.UseGeneric
     [ApiController]
     public class ProductosController : ControllerBase
     {
-        private readonly GetProductosHandler _GetProductosHandler;
-        private readonly GetProductosByFiltersHandler _GetProductoByFiltersHandler;
+        private readonly GetProductosHandler _getProductosHandler;
+        private readonly GetProductosByFiltersHandler _getProductoByFiltersHandler;
 
         public ProductosController(GetProductosHandler getProductosHandler
             , GetProductosByFiltersHandler getProductoByFiltersHandler)
         {
-            _GetProductosHandler = getProductosHandler;
-            _GetProductoByFiltersHandler = getProductoByFiltersHandler;
+            _getProductosHandler = getProductosHandler;
+            _getProductoByFiltersHandler = getProductoByFiltersHandler;
         }
 
         // GET: api/<ProductosController>
-        [Authorize(Policy = "AdminOnly")]
+        [Authorize(Policy = "UserOrAdmin")]
         [HttpGet("obtener_productos")]
         public async Task<dynamic> GetAll()
         {
 
             try
             {
-                var result = await _GetProductosHandler.HandlerAsync();
+                var result = await _getProductosHandler.HandlerAsync();
                 if(result.Value == null || result.Value.Count == 0) 
                 { 
                     return NotFound(result.Errors); 
@@ -46,12 +43,13 @@ namespace API_Farmaceutica.Application.Features.ProductosFeatures.UseGeneric
         }
 
         // GET api/<ProductosController>/5
+        [Authorize(Policy = "UserOrAdmin")]
         [HttpPost("obtener_productos_filtrados")]
         public async Task<IActionResult> GetAllByFilters([FromBody] GetProductosByFiltersRequest request)
         {
             try
             {
-                var result = await _GetProductoByFiltersHandler.HandlerAsync(request);
+                var result = await _getProductoByFiltersHandler.HandlerAsync(request);
                 if(result.Value == null || result.Value.Count == 0)
                 {
                     return NotFound(result.Errors);

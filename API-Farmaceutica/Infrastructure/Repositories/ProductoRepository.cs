@@ -7,11 +7,11 @@ namespace API_Farmaceutica.Infrastructure.Repositories
 {
     public class ProductoRepository : IProductoRepository
     {
-        private readonly FarmaceuticaContext _Context;
+        private readonly FarmaceuticaContext _context;
 
         public ProductoRepository(FarmaceuticaContext context)
         {
-            _Context = context;
+            _context = context;
         }
 
         public Task<bool> DeleteProductoAsync(int id)
@@ -21,7 +21,7 @@ namespace API_Farmaceutica.Infrastructure.Repositories
 
         public async Task<List<Productos>> GetAllProductosAsync()
         {
-            return await _Context.Productos
+            return await _context.Productos
                 .Include(x => x.TipoSuministro)
                 .Include(x => x.TipoPresentacion)
                 .Include(x => x.ClasificacionSuministro)
@@ -31,7 +31,7 @@ namespace API_Farmaceutica.Infrastructure.Repositories
 
         public async Task<List<Productos>> GetAllProductosByFiltersAsync(Expression<Func<Productos, bool>> condicion)
         {
-            return await _Context.Productos
+            return await _context.Productos
                 .Include(x => x.TipoSuministro)
                 .Include(x => x.TipoPresentacion)
                 .Include(x => x.ClasificacionSuministro)

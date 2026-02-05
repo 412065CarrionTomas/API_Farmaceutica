@@ -6,6 +6,8 @@
 
         public string Passwordhash { get; set; } = string.Empty;
 
-        public string Rol { get; set; } = "User";
+        public string? AdminSecretKey { get; set; } = string.Empty;
+
+        internal string Rol { get; set; } = "User";
     }
 }

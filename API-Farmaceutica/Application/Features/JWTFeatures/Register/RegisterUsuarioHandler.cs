@@ -7,17 +7,20 @@ namespace API_Farmaceutica.Application.Features.JWTFeatures.Register
 {
     public class RegisterUsuarioHandler
     {
-        private readonly IUsusarioRepository _UsuarioRepository;
-        private readonly IMapper _Mapper;
-        public RegisterUsuarioHandler(IUsusarioRepository usuarioRepository, IMapper mapper)
+        private readonly IUsusarioRepository _usuarioRepository;
+        private readonly IMapper _mapper;
+        private readonly IConfiguration _configuration;
+        public RegisterUsuarioHandler(IUsusarioRepository usuarioRepository, IMapper mapper, IConfiguration configuration)
         {
-            _UsuarioRepository = usuarioRepository;
-            _Mapper = mapper;
+            _usuarioRepository = usuarioRepository;
+            _mapper = mapper;
+            _configuration = configuration;
         }
 
         public async Task<Result<string>> HandlerAsync(GetUsuarioRegisterRequest request)
         {
             return await GetUsuarioRegisterValidate.ValidateRequest(request)
+                .Bind(DeterminarRol)
                 .Bind(Mapeo)
                 .Bind(ConsultaBDAsync);
         }
@@ -25,7 +28,7 @@ namespace API_Farmaceutica.Application.Features.JWTFeatures.Register
         {
             try
             {
-                await _UsuarioRepository.RegisterAsync(usuario);
+                await _usuarioRepository.RegisterAsync(usuario);
                 return "Registrado!";
             }
             catch (Exception ex)
@@ -36,10 +39,31 @@ namespace API_Farmaceutica.Application.Features.JWTFeatures.Register
 
         private Result<Usuarios> Mapeo(GetUsuarioRegisterRequest request)
         {
-            Usuarios usuario = _Mapper.Map<Usuarios>(request);
+            Usuarios usuario = _mapper.Map<Usuarios>(request);
             if (usuario == null)
                 return ResultExtension.Failure<Usuarios>("Error en el mapeo.");
+            usuario.Rol = request.Rol;
             return usuario;
+        }
+
+        private Result<GetUsuarioRegisterRequest> DeterminarRol(GetUsuarioRegisterRequest request)
+        {
+            string? adminSecretKey = _configuration["AdminRegistration:SecretKey"] ?? null;
+
+            if(request.AdminSecretKey != null)
+            {
+                if(request.AdminSecretKey == adminSecretKey)
+                {
+                    request = request with { AdminSecretKey = null, Rol = "Admin"};
+                    return request;
+                }
+                else
+                {
+                    return ResultExtension.Failure<GetUsuarioRegisterRequest>("Clave de administrador incorrecta.");
+                }
+            }
+
+            return request with { Rol = "User"};
         }
     }
 }

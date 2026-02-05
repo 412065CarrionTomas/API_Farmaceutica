@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using API_Farmaceutica.Application.Shareds.ROP;
 using System.Runtime.ExceptionServices;
 using API_Farmaceutica.Application.Features.FacturasFeatures.PostFactura;
+using Microsoft.AspNetCore.Authorization;
 
 namespace API_Farmaceutica.Application.Features.FacturasFeatures.UseGeneric
 {
@@ -10,24 +11,25 @@ namespace API_Farmaceutica.Application.Features.FacturasFeatures.UseGeneric
     [ApiController]
     public class FacturaController : ControllerBase
     {
-        private readonly GetFacturasHandler _Factura;
-        private readonly GetFacturasByFiltersHandler _FacturaByFilters;
-        private readonly PostFacturaHandler _PostFactura;
+        private readonly GetFacturasHandler _factura;
+        private readonly GetFacturasByFiltersHandler _facturaByFilters;
+        private readonly PostFacturaHandler _postFactura;
 
         public FacturaController(GetFacturasHandler factura, GetFacturasByFiltersHandler facturaByFilters, PostFacturaHandler postFactura)
         {
-            _Factura = factura;
-            _FacturaByFilters = facturaByFilters;
-            _PostFactura = postFactura;
+            _factura = factura;
+            _facturaByFilters = facturaByFilters;
+            _postFactura = postFactura;
         }
 
         // GET: api/<FacturaController>
+        [Authorize(Policy = "UserOrAdmin")]
         [HttpGet("obtener_facturas")]
         public async Task<IActionResult> Get()
         {
             try
             {
-                var result = await _Factura.HandlerAsync();
+                var result = await _factura.HandlerAsync();
                 if (result.Value == null) { return NotFound("No se encontro ninguna factura registrada"); }
                 return Ok(result.Value);
             }
@@ -38,14 +40,14 @@ namespace API_Farmaceutica.Application.Features.FacturasFeatures.UseGeneric
             }
             
         }
-
         // GET api/<FacturaController>/5
+        [Authorize(Policy = "UserOrAdmin")]
         [HttpGet("obtener_facturas_filtradas")]
         public async Task<IActionResult> Get([FromQuery] GetFacturasByFiltersRequest request)
         {
             try
             {
-                Result<List<GetFacturasByFiltersResponse>> result = await _FacturaByFilters.HandlerAsync(request);
+                Result<List<GetFacturasByFiltersResponse>> result = await _facturaByFilters.HandlerAsync(request);
                 return result.IsSucces
                     ? Ok(result.Value)
                     : Ok(result.Errors);
@@ -58,13 +60,14 @@ namespace API_Farmaceutica.Application.Features.FacturasFeatures.UseGeneric
         }
 
         // POST api/<FacturaController>
+        [Authorize(Policy = "AdminOnly")]
         [HttpPost("insertar_factura")]
         public async Task<IActionResult> Post([FromBody] PostFacturaRequest request)
         {
             try
             {
                 if (request == null) { return BadRequest("Debe enviar un valor completo."); }
-                var result = await _PostFactura.HandlerAsync(request);
+                var result = await _postFactura.HandlerAsync(request);
                 return result.IsSucces
                     ? Ok(result.Value)
                     : BadRequest(result.Errors);

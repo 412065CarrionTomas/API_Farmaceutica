@@ -7,13 +7,13 @@ namespace API_Farmaceutica.Application.Features.FacturasFeatures
 {
     public class GetFacturasHandler
     {
-        private readonly IFacturaRepository _FacturaRepository;
-        private readonly IMapper _Mapper;
+        private readonly IFacturaRepository _facturaRepository;
+        private readonly IMapper _mapper;
 
         public GetFacturasHandler(IFacturaRepository facturaRepository, IMapper mapper)
         {
-            _FacturaRepository = facturaRepository;
-            _Mapper = mapper;
+            _facturaRepository = facturaRepository;
+            _mapper = mapper;
         }
 
         public async Task<Result<List<GetFacturaResponse>>> HandlerAsync()
@@ -26,7 +26,7 @@ namespace API_Farmaceutica.Application.Features.FacturasFeatures
         {
             try
             {
-                return await _FacturaRepository.GetFacturasAsync();
+                return await _facturaRepository.GetFacturasAsync();
             }
             catch (Exception e)
             {
@@ -36,7 +36,7 @@ namespace API_Farmaceutica.Application.Features.FacturasFeatures
         
         private Result<List<GetFacturaResponse>> Mapeo(List<Facturas> entitys)
         {
-            List<GetFacturaResponse> result = _Mapper.Map<List<GetFacturaResponse>>(entitys);
+            List<GetFacturaResponse> result = _mapper.Map<List<GetFacturaResponse>>(entitys);
             if(result == null)
             {
                 return ResultExtension.Failure<List<GetFacturaResponse>>("ERROR en el mapeo");

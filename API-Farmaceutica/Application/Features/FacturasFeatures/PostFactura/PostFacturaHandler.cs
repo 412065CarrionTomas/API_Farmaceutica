@@ -7,13 +7,13 @@ namespace API_Farmaceutica.Application.Features.FacturasFeatures.PostFactura
 {
     public class PostFacturaHandler
     {
-        private readonly IMapper _Mapper;
-        private readonly IFacturaRepository _FacturaRepository;
+        private readonly IMapper _mapper;
+        private readonly IFacturaRepository _facturaRepository;
 
         public PostFacturaHandler(IMapper mapper, IFacturaRepository facturaRepository)
         {
-            _Mapper = mapper;
-            _FacturaRepository = facturaRepository;
+            _mapper = mapper;
+            _facturaRepository = facturaRepository;
         }
 
         public async Task<Result<string>> HandlerAsync(PostFacturaRequest request)
@@ -29,7 +29,7 @@ namespace API_Farmaceutica.Application.Features.FacturasFeatures.PostFactura
             {
                 if(request.FechaFacturacion == null || request.FechaFacturacion.Equals("")) 
                 { request.FechaFacturacion = DateTime.Now; }
-                bool result = await _FacturaRepository.InsertFacturaAsync(request);
+                bool result = await _facturaRepository.InsertFacturaAsync(request);
                 return result
                     ? "Factura insertada exitosamente."
                     : ResultExtension.Failure<string>("No se pudo insertar la factura en la BD.");
@@ -42,7 +42,7 @@ namespace API_Farmaceutica.Application.Features.FacturasFeatures.PostFactura
 
         private Result<Facturas> Mapeo(PostFacturaRequest request)
         {
-            Facturas facturas = _Mapper.Map<Facturas>(request);
+            Facturas facturas = _mapper.Map<Facturas>(request);
             return (facturas != null)
                 ? facturas
                 : ResultExtension.Failure<Facturas>("El mapeo generó un objeto inválido.");
