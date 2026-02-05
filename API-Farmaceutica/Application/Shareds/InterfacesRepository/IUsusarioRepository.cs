@@ -6,7 +6,10 @@ namespace API_Farmaceutica.Application.Shareds.InterfacesRepository
 {
     public interface IUsusarioRepository
     {
-        Task RegisterAsync(Usuarios request);
-        Task<Usuarios> LoginAsync(Usuarios request);
+        Task<Usuarios> GetUsuarioByGuid(Guid userId);
+        Task RegisterAsync(Usuarios usuario);
+        Task<Usuarios> LoginAsync(Usuarios usuario);
+
+        Task UpdateUsuario(Usuarios usuario);
     }
 }

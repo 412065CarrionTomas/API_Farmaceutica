@@ -1,8 +1,10 @@
 ﻿using API_Farmaceutica.Application.Features.JWTFeatures.Login;
+using API_Farmaceutica.Application.Features.JWTFeatures.RefreshToken;
 using API_Farmaceutica.Application.Features.JWTFeatures.Register;
-using API_Farmaceutica.Application.Features.JWTFeatures.TokenGenerator;
+using API_Farmaceutica.Application.Features.JWTFeatures.UseGeneric.TokenGeneratorService;
 using Domain.Models;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.Data;
 using Microsoft.AspNetCore.Mvc;
 using System.Runtime.ExceptionServices;
 
@@ -14,13 +16,15 @@ namespace API_Farmaceutica.Application.Features.JWTFeatures.UseGeneric
     {
         private readonly RegisterUsuarioHandler _registerUsuarioHandler;
         private readonly LoginUsuarioHandler _loginUsuarioHandler;
-        private readonly GenerateToken _generateToken;
+        private readonly IGenerateTokenService _generateTokenService;
+        private readonly RefreshTokenHandler _refreshTokenHandler;
 
-        public AuthController(RegisterUsuarioHandler registerUsuarioHandler, GenerateToken generateToken, LoginUsuarioHandler loginUsuarioHandler)
+        public AuthController(RegisterUsuarioHandler registerUsuarioHandler, LoginUsuarioHandler loginUsuarioHandler, RefreshTokenHandler refreshTokenHandler, IGenerateTokenService generateTokenService)
         {
             _registerUsuarioHandler = registerUsuarioHandler;
-            _generateToken = generateToken;
             _loginUsuarioHandler = loginUsuarioHandler;
+            _refreshTokenHandler = refreshTokenHandler;
+            _generateTokenService = generateTokenService;
         }
 
         [HttpPost("register")]
@@ -41,7 +45,7 @@ namespace API_Farmaceutica.Application.Features.JWTFeatures.UseGeneric
         }
 
         [HttpPost("login")]
-        public async Task<ActionResult<string>> Login(GetUsuarioLoginRequest request)
+        public async Task<ActionResult<TokenResponse>> Login(GetUsuarioLoginRequest request)
         {
             try
             {
@@ -49,7 +53,7 @@ namespace API_Farmaceutica.Application.Features.JWTFeatures.UseGeneric
                 if (usuarioLogged.Value == null)
                     return BadRequest(usuarioLogged.Errors);
 
-                string userToken = _generateToken.GenToken(usuarioLogged.Value);
+                TokenResponse userToken = await _generateTokenService.GenerateTokenAsync(usuarioLogged.Value);
                 return Ok(userToken);
             }
             catch (Exception e)
@@ -58,6 +62,15 @@ namespace API_Farmaceutica.Application.Features.JWTFeatures.UseGeneric
                 throw;
             }
         }
+
+        [HttpPost("refresh-token")]
+        public async Task<ActionResult<TokenResponse>> RefreshToken(RefreshTokenRequest request)
+        {
+            var result = await _refreshTokenHandler.RefreshTokenAsync(request);
+            if (result == null || result.AccessToken == null || result.RefreshToken == null)
+                return Unauthorized("No se pudo validar el refresco de token.");
+            return result;
+        }  
 
         
 

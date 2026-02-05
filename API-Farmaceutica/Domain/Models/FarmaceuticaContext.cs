@@ -1007,6 +1007,8 @@ public partial class FarmaceuticaContext : DbContext
             entity.Property(e => e.Passwordhash)
                 .IsRequired()
                 .HasColumnName("passwordhash");
+            entity.Property(e => e.Refreshtoken).HasColumnName("refreshtoken");
+            entity.Property(e => e.Refreshtokenexpirytime).HasColumnName("refreshtokenexpirytime");
             entity.Property(e => e.Rol)
                 .IsRequired()
                 .HasColumnName("rol");

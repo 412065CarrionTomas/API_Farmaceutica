@@ -14,4 +14,8 @@ public partial class Usuarios
     public string Passwordhash { get; set; }
 
     public string Rol { get; set; }
+
+    public string Refreshtoken { get; set; }
+
+    public DateTime? Refreshtokenexpirytime { get; set; }
 }

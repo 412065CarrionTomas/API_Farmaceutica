@@ -1,12 +1,7 @@
-﻿using API_Farmaceutica.Application.Features.JWTFeatures.Login;
-using API_Farmaceutica.Application.Shareds.InterfacesRepository;
+﻿using API_Farmaceutica.Application.Shareds.InterfacesRepository;
 using API_Farmaceutica.Application.Shareds.ROP;
 using AutoMapper;
 using Domain.Models;
-using Microsoft.IdentityModel.Tokens;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Text;
 
 namespace API_Farmaceutica.Application.Features.JWTFeatures.Login
 {

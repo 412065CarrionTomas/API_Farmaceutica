@@ -14,40 +14,59 @@ namespace API_Farmaceutica.Infrastructure.Repositories
             _Context = context;
         }
 
-        public async Task<Usuarios?> LoginAsync(Usuarios entity)
+        public async Task<Usuarios> GetUsuarioByGuid(Guid userId)
         {
-            var usuario = await _Context.Usuarios.FirstOrDefaultAsync(x => 
-                x.Email.Equals(entity.Email) && x.Id.Equals(entity.Id));
-
+            Usuarios? usuario = await _Context.Usuarios.FindAsync(userId);
             if (usuario == null)
+                return null;
+            return usuario;
+        }
+
+        public async Task<Usuarios?> LoginAsync(Usuarios usuario)
+        {
+            var user = await _Context.Usuarios.FirstOrDefaultAsync(x => 
+                x.Email.Equals(usuario.Email));
+
+            if (user == null)
             {
                 return null;
             }
-            if (new PasswordHasher<Usuarios>().VerifyHashedPassword(usuario, usuario.Passwordhash, entity.Passwordhash)
+            if (new PasswordHasher<Usuarios>().VerifyHashedPassword(user, user.Passwordhash, usuario.Passwordhash)
                 == PasswordVerificationResult.Failed)
             {
                 return null;
             }
 
-            return usuario;
+            return user;
         }
 
-        public async Task RegisterAsync(Usuarios entity)
+        public async Task RegisterAsync(Usuarios usuario)
         {
-            if (await _Context.Usuarios.AnyAsync(x => x.Email.Equals(entity.Email) || x.Id.Equals(entity.Id)))
+            if (await _Context.Usuarios.AnyAsync(x => x.Email.Equals(usuario.Email) || x.Id.Equals(usuario.Id)))
             {
                 throw new ArgumentException("Usuario ya existente.");
             }
 
-            Usuarios usuario = new Usuarios();
+            Usuarios user = new Usuarios();
             string hashedPassword = new PasswordHasher<Usuarios>()
-                .HashPassword(usuario, entity.Passwordhash);
+                .HashPassword(user, usuario.Passwordhash);
 
-            usuario.Email = entity.Email;
-            usuario.Passwordhash = hashedPassword;
-            usuario.Rol = entity.Rol;
+            user.Email = usuario.Email;
+            user.Passwordhash = hashedPassword;
+            user.Rol = usuario.Rol;
 
-            await _Context.Usuarios.AddAsync(usuario);
+            await _Context.Usuarios.AddAsync(user);
+            await _Context.SaveChangesAsync();
+        }
+
+        public async Task UpdateUsuario(Usuarios usuario)
+        {
+            Usuarios userTrack = await _Context.Usuarios.FirstOrDefaultAsync(x =>
+                                x.Id.Equals(usuario.Id)!);
+
+            userTrack.Refreshtoken = usuario.Refreshtoken;
+            userTrack.Refreshtokenexpirytime = usuario.Refreshtokenexpirytime;
+
             await _Context.SaveChangesAsync();
         }
     }

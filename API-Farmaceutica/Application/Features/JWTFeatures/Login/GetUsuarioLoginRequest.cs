@@ -1,11 +1,10 @@
 ﻿namespace API_Farmaceutica.Application.Features.JWTFeatures.Login
 {
-    public class GetUsuarioLoginRequest
+    public record GetUsuarioLoginRequest
     {
         public string Email { get; set; } = string.Empty;
 
-        public string Contrasenia { get; set; } = string.Empty;
+        public string Passwordhash { get; set; } = string.Empty;
 
-        public string Rol { get; set; } = "User";
     }
 }

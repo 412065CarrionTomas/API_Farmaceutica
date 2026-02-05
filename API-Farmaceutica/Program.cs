@@ -2,8 +2,9 @@ using API_Farmaceutica.Application.Features.FacturasFeatures;
 using API_Farmaceutica.Application.Features.FacturasFeatures.GetFacturasByFilters;
 using API_Farmaceutica.Application.Features.FacturasFeatures.PostFactura;
 using API_Farmaceutica.Application.Features.JWTFeatures.Login;
+using API_Farmaceutica.Application.Features.JWTFeatures.RefreshToken;
 using API_Farmaceutica.Application.Features.JWTFeatures.Register;
-using API_Farmaceutica.Application.Features.JWTFeatures.TokenGenerator;
+using API_Farmaceutica.Application.Features.JWTFeatures.UseGeneric.TokenGeneratorService;
 using API_Farmaceutica.Application.Features.ProductosFeatures.GetProductos;
 using API_Farmaceutica.Application.Features.ProductosFeatures.GetProductosByFilters;
 using API_Farmaceutica.Application.Shareds.InterfacesRepository;
@@ -72,7 +73,8 @@ namespace API_Farmaceutica
                 //JWT
             builder.Services.AddScoped<RegisterUsuarioHandler>();
             builder.Services.AddScoped<LoginUsuarioHandler>();
-            builder.Services.AddScoped<GenerateToken>();
+            builder.Services.AddScoped<RefreshTokenHandler>();
+            builder.Services.AddScoped<IGenerateTokenService, GenerateTokenService>();
 
             //AddAuthentication
             builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>

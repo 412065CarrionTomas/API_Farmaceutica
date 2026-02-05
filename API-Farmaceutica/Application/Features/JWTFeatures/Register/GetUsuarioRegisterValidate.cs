@@ -11,9 +11,9 @@ namespace API_Farmaceutica.Application.Features.JWTFeatures.Register
             List<string> errors = new List<string>();
             if(request == null)
                 errors.Add("Debe ingresar valores al registro.");
-            if(request.Contrasenia == null)
+            if(request.Passwordhash == null)
                 errors.Add("Debe ingresar contrasenia.");
-            if (request.Contrasenia.Length < 8)
+            if (request.Passwordhash.Length < 8)
                 errors.Add("La contrasenia debe tener minimo 8 caracteres.");
             if (request.Rol == null)
                 errors.Add("El campo rol no puede estar vacio.");
